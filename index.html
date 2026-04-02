@@ -136,11 +136,13 @@
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 32px;
-            font-weight: 800;
-            color: #000000;
-            letter-spacing: -2px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
         }
 
         .nav-links {
@@ -791,7 +793,7 @@
         <div class="container">
             <div class="nav-content">
                 <div class="logo">
-                    <img src="seismic%20big%20logo.svg" alt="Seismic" style="height: 32px; width: auto; display: block;">
+                    <img src="seismic%20big%20logo.svg" alt="Seismic" style="height: 44px; width: auto; display: block; filter: brightness(0);">
                 </div>
                 <ul class="nav-links">
                     <li><a href="#ecosystem">Ecosystem</a></li>
@@ -996,8 +998,10 @@
         <div class="container">
             <div class="footer-grid-rox scroll-reveal">
                 <div class="footer-col" style="padding-right: 40px;">
-                    <div class="footer-brand-rox">Seismic</div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6;">
+                    <div class="footer-brand-rox">
+                        <img src="seismic%20big%20logo.svg" alt="Seismic" style="height: 44px; width: auto; display: block;">
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; margin-top: 20px;">
                         Building the future of privacy-preserving blockchain infrastructure. Native encryption for a secure, decentralized world.
                     </p>
                 </div>
