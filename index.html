@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1105,5 +1105,28 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: observer.unobserve(entry.target); if you only want it to animate once
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Fallback for safety: if observer fails, show everything after 1 second
+            setTimeout(() => {
+                document.querySelectorAll('.scroll-reveal').forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
