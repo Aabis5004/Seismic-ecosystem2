@@ -671,38 +671,45 @@
         .rox-copyright { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 13px; }
         @media (max-width: 768px) { .rox-grid { grid-template-columns: 1fr; } .footer-grid-rox { grid-template-columns: 1fr; gap: 60px; } .rox-header h2 { font-size: 40px; } }
 
-        /* Outcrowd Bento Grid Section */
-        .bento-section { background-color: #030303; color: #ffffff; font-family: 'Syne', sans-serif; position: relative; z-index: 2; padding: 140px 0; overflow: hidden; display: flex; justify-content: center; }
-        .bento-grid-container { max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(280px, auto); gap: 24px; padding: 0 24px; position: relative; }
-        .bento-bg-circles { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 140vw; height: 140vw; display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; opacity: 0.15; z-index: 0; pointer-events: none; }
-        .bento-bg-circles div { background: #1a1a24; border-radius: 50%; width: 100%; aspect-ratio: 1/1; box-shadow: inset -10px -10px 30px rgba(0,0,0,0.5); }
-        .bento-header-card { grid-column: span 4; padding: 40px 0 60px 0; z-index: 1; text-align: center;}
-        .bento-header-card h2 { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -2px; color: #ffffff; margin-bottom: 20px; }
-        .bento-header-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
-        .bento-card { border-radius: 32px; padding: 36px; position: relative; overflow: hidden; z-index: 1; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: space-between; color: #000; background-size: 200% 200% !important; animation: moveGradient 8s ease infinite; }
+        /* Plasma.to Inspired Bento Grid Section */
+        .bento-section { background-color: var(--bg-dark); color: #ffffff; font-family: 'Syne', sans-serif; position: relative; z-index: 2; padding: 60px 0 140px; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+        .bento-hero-header { max-width: 900px; text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
+        .bento-hero-header h1 { font-size: 72px; font-weight: 800; line-height: 1.05; letter-spacing: -2px; color: #ffffff; margin-bottom: 24px; animation: fadeIn 0.8s ease-out; }
+        .bento-hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; color: var(--accent-primary); border: 1px solid rgba(0, 255, 159, 0.2); }
+        
+        .bento-grid-container { max-width: 1400px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(320px, auto); gap: 12px; padding: 0 24px; position: relative; }
+        .bento-bg-circles { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vw; display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; opacity: 0.08; z-index: 0; pointer-events: none; }
+        .bento-bg-circles div { background: var(--accent-primary); border-radius: 50%; width: 100%; aspect-ratio: 1/1; filter: blur(100px); }
+        
+        .bento-card { border-radius: 16px; padding: 40px; position: relative; overflow: hidden; z-index: 1; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; color: #000; background-size: 200% 200% !important; border: 1px solid rgba(255,255,255,0.05); animation: moveGradient 12s ease infinite; }
         @keyframes moveGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .bento-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.8); z-index: 3; }
-        .bento-card-plus { position: absolute; top: 24px; left: 24px; font-family: monospace; font-size: 20px; font-weight: 400; opacity: 0.6; }
-        .bento-card-header { margin-top: 20px; margin-bottom: 24px; }
+        .bento-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 30px 60px rgba(0,0,0,0.6); z-index: 3; border-color: rgba(255,255,255,0.2); }
+        .bento-card-plus { position: absolute; top: 24px; right: 24px; font-family: monospace; font-size: 24px; font-weight: 300; opacity: 0.3; }
+        .bento-card-header { margin-bottom: auto; display: flex; align-items: center; height: 80px; }
+        
         .bento-card.tall { grid-row: span 2; }
         .bento-card.wide { grid-column: span 2; }
         .bento-card.large { grid-column: span 2; grid-row: span 2; }
-        .bento-card h3 { font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; font-family: 'Syne', sans-serif;}
-        .bento-card p { font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; opacity: 0.8; font-weight: 400; }
-        .card-purple { background: linear-gradient(-45deg, #b084e9, #9d68e4, #8a4cdf, #b084e9); }
-        .card-yellow { background: linear-gradient(-45deg, #FCE694, #fbd85d, #f9c926, #FCE694); }
-        .card-cyan { background: linear-gradient(-45deg, #85D4E0, #6acbd9, #4fbcd2, #85D4E0); }
-        .card-pink { background: linear-gradient(-45deg, #F1B5CB, #ec9cb8, #e783a5, #F1B5CB); }
-        .card-mint { background: linear-gradient(-45deg, #A7E4C4, #8dd9b0, #73cf9c, #A7E4C4); }
-        .card-emerald { background: linear-gradient(-45deg, #C6E9D3, #a2d6b3, #81c394, #C6E9D3); }
-        .card-dark { background: #1C1C1F; color: #fff; }
-        .bento-btn { display: inline-flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(0,0,0,0.1); color: inherit; padding: 16px 24px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 15px; margin-top: 32px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(0,0,0,0.1); font-family: 'Syne', sans-serif;}
+        
+        .bento-card h3 { font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; font-family: 'Syne', sans-serif; margin-top: 40px;}
+        .bento-card p { font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.5; opacity: 0.8; font-weight: 400; max-width: 90%; }
+        
+        .card-purple { background: linear-gradient(135deg, #b084e9, #8a4cdf); }
+        .card-yellow { background: linear-gradient(135deg, #FCE694, #f9c926); }
+        .card-cyan { background: linear-gradient(135deg, #85D4E0, #4fbcd2); }
+        .card-pink { background: linear-gradient(135deg, #F1B5CB, #e783a5); }
+        .card-mint { background: linear-gradient(135deg, #A7E4C4, #73cf9c); }
+        .card-emerald { background: linear-gradient(135deg, #C6E9D3, #81c394); }
+        .card-dark { background: #111113; color: #fff; }
+        
+        .bento-btn { display: inline-flex; align-items: center; justify-content: space-between; width: fit-content; gap: 40px; background: rgba(0,0,0,0.08); color: inherit; padding: 14px 28px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 32px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.1); font-family: 'Syne', sans-serif;}
         .card-dark .bento-btn { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-        .bento-btn:hover { background: rgba(0,0,0,0.2); transform: scale(1.02); }
+        .bento-btn:hover { background: rgba(0,0,0,0.15); padding-right: 20px; }
         .card-dark .bento-btn:hover { background: rgba(255,255,255,0.1); }
-        .bento-card-logo-box { width: 64px; height: 64px; background: rgba(0,0,0,0.05); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px; }
-        @media (max-width: 992px) { .bento-grid-container { grid-template-columns: repeat(2, 1fr); } .bento-card.tall { grid-row: span 1; } }
-        @media (max-width: 768px) { .bento-grid-container { grid-template-columns: 1fr; } .bento-card.wide, .bento-card.large { grid-column: span 1; } .bento-header-card h2 { font-size: 40px; } }
+        
+        @media (max-width: 1200px) { .bento-grid-container { grid-template-columns: repeat(3, 1fr); } .bento-card.tall { grid-row: span 1; } }
+        @media (max-width: 992px) { .bento-grid-container { grid-template-columns: repeat(2, 1fr); } .bento-hero-header h1 { font-size: 56px; } }
+        @media (max-width: 768px) { .bento-grid-container { grid-template-columns: 1fr; gap: 16px; } .bento-card.wide, .bento-card.large { grid-column: span 1; } .bento-hero-header h1 { font-size: 44px; } }
 
     </style>
 </head>
@@ -728,168 +735,20 @@
 
 
 
-    <!-- Seismic Modern Ecosystem Section -->
-    <section class="ecosystem-modern" id="ecosystem">
-        <div class="container">
-            
-            <!-- Main Hero Logo (Short not Big) -->
-            <div class="main-logo-wrapper scroll-reveal">
-                <svg width="727" height="210" viewBox="0 0 727 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_n_5_119)">
-                <g clip-path="url(#clip0_5_119)">
-                <path d="M70.5471 0L68.1305 38.3682L0 128.918L70.5471 0Z" fill="url(#paint0_linear_5_119)"/>
-                <path d="M70.5469 0L127.326 25.3107L120.076 106.222L68.1304 38.3682L70.5469 0Z" fill="url(#paint1_linear_5_119)"/>
-                <path d="M127.326 25.3107L145.736 136.996L120.076 106.222L127.326 25.3107Z" fill="url(#paint2_linear_5_119)"/>
-                <path d="M145.736 136.996L115.8 208.756L115.876 206.914L50.7688 208.614L120.076 106.222L145.736 136.996Z" fill="url(#paint3_linear_5_119)"/>
-                <path d="M68.1305 38.3684L120.076 106.222L50.7688 208.614L0 128.918L68.1305 38.3684Z" fill="url(#paint4_linear_5_119)"/>
-                </g>
-                </g>
-                <path d="M257.71 95.4956C256.956 87.7399 254.101 81.9231 249.146 78.0452C244.191 74.0596 238.105 72.0668 230.888 72.0668C228.411 72.0668 225.771 72.39 222.971 73.0363C220.278 73.5749 217.746 74.4905 215.377 75.7831C213.115 77.0757 211.229 78.7454 209.721 80.792C208.213 82.8387 207.459 85.3162 207.459 88.2246C207.459 90.9176 207.998 93.2335 209.075 95.1724C210.152 97.1114 211.66 98.8349 213.599 100.343C215.538 101.743 217.746 102.928 220.224 103.898C222.809 104.867 225.556 105.729 228.464 106.483L240.26 109.553C244.891 110.738 249.469 112.138 253.994 113.754C258.626 115.37 262.719 117.416 266.274 119.894C269.828 122.371 272.683 125.441 274.837 129.104C277.099 132.766 278.23 137.237 278.23 142.515C278.23 147.901 276.992 152.64 274.514 156.734C272.037 160.719 268.751 164.058 264.658 166.751C260.672 169.444 256.04 171.437 250.762 172.73C245.592 174.022 240.313 174.669 234.928 174.669C221.894 174.669 211.176 171.437 202.774 164.974C194.479 158.511 189.416 149.355 187.585 137.506H206.005C206.328 141.168 207.082 144.669 208.267 148.008C209.56 151.348 211.391 154.31 213.761 156.895C216.131 159.48 219.093 161.581 222.648 163.197C226.202 164.705 230.457 165.459 235.412 165.459C238.321 165.459 241.283 165.136 244.299 164.489C247.423 163.735 250.224 162.604 252.701 161.096C255.286 159.48 257.387 157.488 259.003 155.118C260.618 152.64 261.426 149.624 261.426 146.069C261.426 142.946 260.726 140.306 259.326 138.152C257.925 135.998 256.04 134.167 253.671 132.658C251.301 131.043 248.554 129.75 245.43 128.781C242.306 127.703 239.021 126.734 235.574 125.872L222.001 122.317C218.016 121.24 214.138 119.894 210.368 118.278C206.598 116.555 203.258 114.454 200.35 111.977C197.441 109.391 195.126 106.429 193.402 103.09C191.679 99.6428 190.817 95.6572 190.817 91.133C190.817 86.178 192.002 81.9231 194.372 78.3684C196.741 74.8137 199.865 71.9053 203.743 69.6432C207.729 67.2734 212.199 65.5499 217.154 64.4727C222.217 63.3955 227.387 62.8569 232.665 62.8569C238.698 62.8569 244.191 63.7187 249.146 65.4421C254.101 67.1656 258.41 69.5355 262.073 72.5516C265.735 75.46 268.697 78.907 270.959 82.8925C273.329 86.8781 274.891 91.0791 275.645 95.4956H257.71ZM323.93 165.943C328.885 165.943 333.033 164.382 336.372 161.258C339.819 158.026 341.812 153.556 342.35 147.847H359.154C358.292 152.479 356.731 156.464 354.468 159.804C352.206 163.143 349.406 165.943 346.066 168.206C342.835 170.36 339.226 171.976 335.241 173.053C331.255 174.13 327.108 174.669 322.799 174.669C317.09 174.669 311.812 173.699 306.965 171.76C302.225 169.821 298.132 167.075 294.685 163.52C291.238 159.965 288.545 155.656 286.606 150.594C284.667 145.531 283.697 139.822 283.697 133.466C283.697 127.542 284.559 122.102 286.283 117.147C288.114 112.084 290.699 107.722 294.038 104.059C297.378 100.397 301.417 97.5423 306.157 95.4956C311.004 93.3412 316.444 92.264 322.476 92.264C327.754 92.264 332.655 93.1258 337.18 94.8493C341.812 96.4651 345.797 98.9965 349.136 102.443C352.476 105.89 355.061 110.253 356.892 115.531C358.723 120.809 359.585 127.057 359.477 134.274H301.794C301.902 143.969 303.841 151.671 307.611 157.38C311.381 163.089 316.821 165.943 323.93 165.943ZM322.315 100.666C319.514 100.666 316.875 101.151 314.397 102.12C312.027 102.982 309.927 104.436 308.096 106.483C306.264 108.422 304.756 110.953 303.572 114.077C302.494 117.201 301.902 120.971 301.794 125.387H341.219C341.327 120.863 340.896 117.039 339.926 113.915C339.065 110.792 337.772 108.26 336.049 106.321C334.325 104.382 332.278 102.982 329.909 102.12C327.539 101.151 325.007 100.666 322.315 100.666ZM373.68 62.5338H390.969V82.4078H373.68V62.5338ZM390.969 113.269V161.581C390.969 163.52 391.238 164.812 391.777 165.459C392.423 165.997 393.715 166.374 395.654 166.59L401.956 167.236V172.73H362.693V167.236L368.994 166.59C370.933 166.374 372.172 165.997 372.71 165.459C373.357 164.812 373.68 163.52 373.68 161.581V104.544C373.68 102.713 373.411 101.528 372.872 100.989C372.333 100.343 371.041 99.9121 368.994 99.6966L362.693 99.0503V93.5567H391.13L390.969 113.269ZM419.006 147.847C419.545 152.91 421.376 157.218 424.5 160.773C427.731 164.22 432.525 165.943 438.88 165.943C444.589 165.943 449.006 164.866 452.13 162.712C455.253 160.45 456.815 157.434 456.815 153.664C456.815 151.401 456.223 149.516 455.038 148.008C453.961 146.393 452.507 145.046 450.675 143.969C448.952 142.892 446.959 142.03 444.697 141.384C442.435 140.737 440.119 140.199 437.749 139.768L428.539 137.991C425.631 137.452 422.722 136.644 419.814 135.567C417.013 134.382 414.482 132.874 412.22 131.043C409.958 129.104 408.127 126.842 406.726 124.256C405.326 121.563 404.626 118.386 404.626 114.723C404.626 110.738 405.541 107.345 407.373 104.544C409.311 101.636 411.735 99.3196 414.644 97.5961C417.66 95.7649 421.053 94.4184 424.823 93.5567C428.701 92.6949 432.579 92.264 436.457 92.264C444.859 92.264 452.13 94.3107 458.27 98.404C464.517 102.39 468.395 108.314 469.903 116.178H453.745C453.638 114.023 453.045 112.03 451.968 110.199C450.999 108.26 449.706 106.644 448.09 105.352C446.474 103.952 444.535 102.874 442.273 102.12C440.119 101.366 437.749 100.989 435.164 100.989C433.656 100.989 431.932 101.151 429.993 101.474C428.162 101.689 426.385 102.174 424.661 102.928C422.938 103.682 421.484 104.759 420.299 106.16C419.114 107.452 418.521 109.122 418.521 111.169C418.521 114.723 419.868 117.524 422.561 119.571C425.254 121.51 429.078 122.964 434.033 123.933L443.243 125.711C446.905 126.465 450.406 127.38 453.745 128.457C457.192 129.535 460.208 131.043 462.794 132.982C465.379 134.813 467.426 137.129 468.934 139.929C470.442 142.73 471.196 146.177 471.196 150.27C471.196 154.687 470.28 158.457 468.449 161.581C466.618 164.705 464.14 167.236 461.016 169.175C457.893 171.114 454.284 172.514 450.191 173.376C446.097 174.238 441.789 174.669 437.264 174.669C432.633 174.669 428.27 174.076 424.177 172.891C420.191 171.706 416.636 169.983 413.513 167.721C410.496 165.459 408.019 162.658 406.08 159.319C404.249 155.98 403.172 152.156 402.848 147.847H419.006ZM502.226 106.806H502.388C504.65 102.497 507.666 98.9965 511.436 96.3035C515.314 93.6105 520.161 92.264 525.978 92.264C532.334 92.264 537.127 93.826 540.359 96.9498C543.698 99.9659 546.014 103.574 547.306 107.776C549.461 103.144 552.638 99.4273 556.839 96.6266C561.148 93.7182 566.265 92.264 572.189 92.264C576.929 92.264 580.753 93.1258 583.661 94.8493C586.677 96.4651 588.993 98.6194 590.609 101.312C592.225 104.005 593.302 107.075 593.841 110.522C594.379 113.862 594.649 117.255 594.649 120.702V161.581C594.649 163.52 594.918 164.812 595.457 165.459C596.103 165.997 597.395 166.374 599.334 166.59L605.636 167.236V172.73H566.373V167.236L572.674 166.59C574.613 166.374 575.852 165.997 576.39 165.459C577.037 164.812 577.36 163.52 577.36 161.581V126.519C577.36 118.009 576.444 111.977 574.613 108.422C572.782 104.759 569.496 102.928 564.757 102.928C559.155 102.928 555.062 105.029 552.477 109.23C549.892 113.431 548.599 118.763 548.599 125.226V161.581C548.599 163.52 548.868 164.812 549.407 165.459C550.053 165.997 551.346 166.374 553.285 166.59L559.586 167.236V172.73H520.323V167.236L526.624 166.59C528.563 166.374 529.802 165.997 530.341 165.459C530.987 164.812 531.31 163.52 531.31 161.581V126.519C531.31 118.009 530.341 111.977 528.402 108.422C526.571 104.759 523.285 102.928 518.546 102.928C513.052 102.928 508.959 105.029 506.266 109.23C503.68 113.431 502.388 118.763 502.388 125.226V161.581C502.388 163.52 502.657 164.812 503.196 165.459C503.842 165.997 505.135 166.374 507.074 166.59L513.375 167.236V172.73H474.112V167.236L480.413 166.59C482.352 166.374 483.591 165.997 484.13 165.459C484.776 164.812 485.099 163.52 485.099 161.581V104.544C485.099 102.713 484.83 101.528 484.291 100.989C483.753 100.343 482.46 99.9121 480.413 99.6966L474.112 99.0503V93.5567H502.226V106.806ZM616.469 62.5338H633.758V82.4078H616.469V62.5338ZM633.758 113.269V161.581C633.758 163.52 634.027 164.812 634.566 165.459C635.212 165.997 636.505 166.374 638.444 166.59L644.745 167.236V172.73H605.482V167.236L611.783 166.59C613.722 166.374 614.961 165.997 615.5 165.459C616.146 164.812 616.469 163.52 616.469 161.581V104.544C616.469 102.713 616.2 101.528 615.661 100.989C615.123 100.343 613.83 99.9121 611.783 99.6966L605.482 99.0503V93.5567H633.92L633.758 113.269ZM645.799 133.466C645.799 127.219 646.715 121.563 648.546 116.501C650.485 111.33 653.178 106.968 656.625 103.413C660.072 99.8582 664.165 97.1114 668.905 95.1724C673.645 93.2335 678.869 92.264 684.578 92.264C688.671 92.264 692.657 92.8026 696.535 93.8798C700.52 94.8493 704.129 96.4651 707.36 98.7272C710.592 100.882 713.339 103.682 715.601 107.129C717.863 110.576 719.425 114.669 720.287 119.409H703.483C703.375 115.962 702.729 113.054 701.544 110.684C700.359 108.314 698.851 106.429 697.019 105.029C695.296 103.521 693.411 102.497 691.364 101.959C689.318 101.312 687.325 100.989 685.386 100.989C678.492 100.989 673.268 103.951 669.713 109.876C666.266 115.693 664.542 123.556 664.542 133.466C664.542 143.376 666.266 151.294 669.713 157.218C673.16 163.035 678.438 165.943 685.547 165.943C687.486 165.943 689.479 165.674 691.526 165.136C693.572 164.489 695.458 163.466 697.181 162.066C698.905 160.558 700.359 158.619 701.544 156.249C702.729 153.879 703.375 150.971 703.483 147.524H720.287C719.425 152.263 717.863 156.357 715.601 159.804C713.339 163.251 710.592 166.105 707.36 168.367C704.129 170.522 700.52 172.083 696.535 173.053C692.657 174.13 688.671 174.669 684.578 174.669C678.869 174.669 673.645 173.699 668.905 171.76C664.165 169.821 660.072 167.075 656.625 163.52C653.178 159.965 650.485 155.656 648.546 150.594C646.715 145.531 645.799 139.822 645.799 133.466Z" fill="#ffffff" style="fill:#ffffff;fill-opacity:1;"/>
-                <defs>
-                <filter id="filter0_n_5_119" x="0" y="0" width="145.736" height="208.757" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feTurbulence type="fractalNoise" baseFrequency="2.0310719013214111 2.0310719013214111" stitchTiles="stitch" numOctaves="3" result="noise" seed="9417" />
-                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
-                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
-                <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-                </feComponentTransfer>
-                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-                <feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
-                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
-                <feMerge result="effect1_noise_5_119">
-                <feMergeNode in="shape" />
-                <feMergeNode in="color1" />
-                </feMerge>
-                </filter>
-                <linearGradient id="paint0_linear_5_119" x1="35.2736" y1="128.918" x2="-19.7574" y2="14.92" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D0A0B7" style="stop-color:#D0A0B7;stop-color:color(display-p3 0.8173 0.6293 0.7161);stop-opacity:1;"/>
-                <stop offset="1" stop-color="#6A525D" style="stop-color:#6A525D;stop-color:color(display-p3 0.4173 0.3213 0.3656);stop-opacity:1;"/>
-                </linearGradient>
-                <linearGradient id="paint1_linear_5_119" x1="97.7281" y1="106.222" x2="52.9004" y2="11.6542" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D0A0B7" style="stop-color:#D0A0B7;stop-color:color(display-p3 0.8173 0.6293 0.7161);stop-opacity:1;"/>
-                <stop offset="1" stop-color="#6A525D" style="stop-color:#6A525D;stop-color:color(display-p3 0.4173 0.3213 0.3656);stop-opacity:1;"/>
-                </linearGradient>
-                <linearGradient id="paint2_linear_5_119" x1="132.906" y1="136.996" x2="72.6075" y2="84.5536" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D0A0B7" style="stop-color:#D0A0B7;stop-color:color(display-p3 0.8173 0.6293 0.7161);stop-opacity:1;"/>
-                <stop offset="1" stop-color="#6A525D" style="stop-color:#6A525D;stop-color:color(display-p3 0.4173 0.3213 0.3656);stop-opacity:1;"/>
-                </linearGradient>
-                <linearGradient id="paint3_linear_5_119" x1="85.4225" y1="208.613" x2="47.6119" y2="111.729" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#8D6477" style="stop-color:#8D6477;stop-color:color(display-p3 0.5545 0.3923 0.4671);stop-opacity:1;"/>
-                <stop offset="0.600962" stop-color="#6A525D" style="stop-color:#6A525D;stop-color:color(display-p3 0.4173 0.3213 0.3656);stop-opacity:1;"/>
-                </linearGradient>
-                <linearGradient id="paint4_linear_5_119" x1="60.0382" y1="208.614" x2="-0.932334" y2="45.8254" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D0A0B7" style="stop-color:#D0A0B7;stop-color:color(display-p3 0.8173 0.6293 0.7161);stop-opacity:1;"/>
-                <stop offset="1" stop-color="#6A525D" style="stop-color:#6A525D;stop-color:color(display-p3 0.4173 0.3213 0.3656);stop-opacity:1;"/>
-                </linearGradient>
-                <clipPath id="clip0_5_119">
-                <rect width="145.736" height="208.757" fill="white" style="fill:white;fill-opacity:1;"/>
-                </clipPath>
-                </defs>
-                </svg>
-            </div>
-
-            <!-- Sleek Numbers Layout -->
-            <div class="modern-stats-grid scroll-reveal">
-                <div class="modern-stat">
-                    <h4>$17M</h4>
-                    <p>Total Funding</p>
-                </div>
-                <div class="modern-stat">
-                    <h4>12+</h4>
-                    <p>Projects Building</p>
-                </div>
-                <div class="modern-stat">
-                    <h4>100%</h4>
-                    <p>EVM Compatible</p>
-                </div>
-            </div>
-
-            <!-- Scrolling Ecosystem / Backers Marquee -->
-            <div class="trusted-label scroll-reveal">Powering Next-Gen Financial Applications</div>
-            
-            <div class="marquee-container scroll-reveal">
-                <div class="marquee-track">
-                    <!-- Project/Backer Pills Setup 1 -->
-                    <div class="marquee-pill"><span></span>BROOKWELL</div>
-                    <div class="marquee-pill"><span></span>BLEND</div>
-                    <div class="marquee-pill"><span></span>VEND MONEY</div>
-                    <div class="marquee-pill"><span></span>CRED PROTOCOL</div>
-                    <div class="marquee-pill"><span></span>SPECIE</div>
-                    <div class="marquee-pill"><span></span>VIA</div>
-                    <div class="marquee-pill"><span></span>SHIFT</div>
-                    <div class="marquee-pill"><span></span>DASHX</div>
-                    <div class="marquee-pill"><span></span>PROMIS</div>
-                    <div class="marquee-pill"><span></span>ECOSYSTEM PROGRAM</div>
-                    
-                    <!-- Exact Duplication for Seamless Infinity Scroll -->
-                    <div class="marquee-pill"><span></span>BROOKWELL</div>
-                    <div class="marquee-pill"><span></span>BLEND</div>
-                    <div class="marquee-pill"><span></span>VEND MONEY</div>
-                    <div class="marquee-pill"><span></span>CRED PROTOCOL</div>
-                    <div class="marquee-pill"><span></span>SPECIE</div>
-                    <div class="marquee-pill"><span></span>VIA</div>
-                    <div class="marquee-pill"><span></span>SHIFT</div>
-                    <div class="marquee-pill"><span></span>DASHX</div>
-                    <div class="marquee-pill"><span></span>PROMIS</div>
-                    <div class="marquee-pill"><span></span>ECOSYSTEM PROGRAM</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-    <script>
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-
-    
-    <!-- Outcrowd Bento Grid Section -->
-    <section class="bento-section" id="value">
+    <!-- Main Ecosystem Hero Section (Plasma.to Inspired) -->
+    <section class="bento-section" id="ecosystem">
         <div class="bento-bg-circles">
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+
+        <div class="bento-hero-header scroll-reveal">
+            <div class="bento-hero-pill">THE PRIVACY LAYER</div>
+            <h1>Bridging Web2 and Web3<br>with privacy-first fintech.</h1>
+            <p style="font-size: 20px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Secure infrastructure, private multi-currency accounts, and robust yield instruments for a new global financial system.</p>
         </div>
 
         <div class="bento-grid-container">
-            <div class="bento-header-card scroll-reveal">
-                <div class="bento-header-pill">THE PRIVACY LAYER</div>
-                <h2>Bridging Web2 and Web3<br>with privacy-first fintech.</h2>
-            </div>
 
             <!-- Blend: Tall Cyan -->
             <div class="bento-card tall card-cyan scroll-reveal" style="transition-delay: 0.1s;">
