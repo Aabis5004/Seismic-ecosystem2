@@ -9,15 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-secondary: #13131a;
-            --accent-primary: #00ff9f;
-            --accent-secondary: #00d4ff;
-            --accent-purple: #b042ff;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b8;
-            --gradient-main: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            --gradient-alt: linear-gradient(135deg, var(--accent-secondary), var(--accent-purple));
+            --bg-dark: #ffffff;
+            --bg-secondary: #f4f5f6;
+            --accent-primary: #000000;
+            --accent-secondary: #333333;
+            --accent-purple: #555555;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --gradient-main: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,1));
+            --gradient-alt: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
         }
 
         * {
@@ -117,10 +117,10 @@
             padding: 30px 0;
             position: sticky;
             top: 0;
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 255, 159, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             animation: slideDown 0.6s ease-out;
         }
 
@@ -139,123 +139,142 @@
             font-family: 'Syne', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #ffffff;
+            color: #000000;
             letter-spacing: -2px;
-            animation: glow 4s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); }
-            50% { text-shadow: 0 4px 25px rgba(255, 255, 255, 0.3); }
         }
 
         .nav-links {
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
+            font-size: 15px;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-main);
-            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--text-primary);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-btn {
+            background: #000;
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.05);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 160px;
+        /* Cosmos Style Hero Section */
+        .cosmos-hero {
             position: relative;
+            padding: 200px 0 250px;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
         }
 
-        .hero-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(0, 255, 159, 0.1);
-            border: 1px solid rgba(0, 255, 159, 0.3);
-            border-radius: 30px;
-            color: var(--accent-primary);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            animation: fadeIn 0.8s ease-out 0.2s both;
+        .cosmos-hero-content {
+            position: relative;
+            z-index: 10;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero h1 {
+        .cosmos-hero h1 {
             font-family: 'Syne', sans-serif;
-            font-size: 92px;
+            font-size: 84px;
             font-weight: 800;
             line-height: 1;
             margin-bottom: 30px;
             letter-spacing: -3px;
-            animation: fadeIn 0.8s ease-out 0.4s both;
+            color: #000;
         }
 
-        .hero h1 .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .hero-subtitle {
-            font-size: 24px;
+        .cosmos-subtitle {
+            font-size: 22px;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin-bottom: 50px;
+            max-width: 650px;
+            margin: 0 auto 50px;
             line-height: 1.5;
-            animation: fadeIn 0.8s ease-out 0.6s both;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .cta-buttons {
             display: flex;
             gap: 20px;
-            animation: fadeIn 0.8s ease-out 0.8s both;
+            justify-content: center;
         }
 
         .btn {
             padding: 18px 40px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 40px;
             transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
         }
+        
+        .btn-primary {
+            background: #000;
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #000;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .btn-secondary:hover {
+            background: #f4f5f6;
+        }
+
+        /* Floating Atmosphere Cards */
+        .atm-card {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            animation: drift ease-in-out infinite alternate;
+        }
+        
+        .atm-card img, .atm-card svg {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        @keyframes drift {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(5deg); }
+        }
+
 
         .btn-primary {
             background: var(--gradient-main);
@@ -643,6 +662,99 @@
             }
         }
 
+        /* Maze Style Ecosystem List */
+        .ecosystem-list-section {
+            padding: 100px 0 150px;
+            background: #ffffff;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .ecosystem-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .eco-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px;
+            border-radius: 24px;
+            background: #fdfdfd;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .eco-list-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            background: #ffffff;
+        }
+        
+        .eco-logo-box {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            background: #f4f5f6;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .eco-logo-box img, .eco-logo-box svg {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+        
+        .eco-content {
+            flex-grow: 1;
+        }
+        
+        .eco-content h3 {
+            font-size: 28px;
+            font-family: 'Syne', sans-serif;
+            color: #000;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .eco-content p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .eco-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s ease;
+        }
+        
+        .eco-link:hover {
+            gap: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .eco-list-item {
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px;
+            }
+        }
+
         /* Rox.com Inspired Sections */
         .rox-dark-section { background-color: #000000; color: #ffffff; font-family: 'JetBrains Mono', monospace; position: relative; z-index: 2; padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.05); }
         .rox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 80px; }
@@ -671,55 +783,9 @@
         .rox-copyright { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 13px; }
         @media (max-width: 768px) { .rox-grid { grid-template-columns: 1fr; } .footer-grid-rox { grid-template-columns: 1fr; gap: 60px; } .rox-header h2 { font-size: 40px; } }
 
-        /* Plasma.to Inspired Bento Grid Section */
-        .bento-section { background-color: var(--bg-dark); color: #ffffff; font-family: 'Syne', sans-serif; position: relative; z-index: 2; padding: 60px 0 140px; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
-        .bento-hero-header { max-width: 900px; text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
-        .bento-hero-header h1 { font-size: 72px; font-weight: 800; line-height: 1.05; letter-spacing: -2px; color: #ffffff; margin-bottom: 24px; animation: fadeIn 0.8s ease-out; }
-        .bento-hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; color: var(--accent-primary); border: 1px solid rgba(0, 255, 159, 0.2); }
-        
-        .bento-grid-container { max-width: 1400px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(320px, auto); gap: 12px; padding: 0 24px; position: relative; }
-        .bento-bg-circles { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vw; display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; opacity: 0.08; z-index: 0; pointer-events: none; }
-        .bento-bg-circles div { background: var(--accent-primary); border-radius: 50%; width: 100%; aspect-ratio: 1/1; filter: blur(100px); }
-        
-        .bento-card { border-radius: 16px; padding: 40px; position: relative; overflow: hidden; z-index: 1; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; color: #000; background-size: 200% 200% !important; border: 1px solid rgba(255,255,255,0.05); animation: moveGradient 12s ease infinite; }
-        @keyframes moveGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .bento-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 30px 60px rgba(0,0,0,0.6); z-index: 3; border-color: rgba(255,255,255,0.2); }
-        .bento-card-plus { position: absolute; top: 24px; right: 24px; font-family: monospace; font-size: 24px; font-weight: 300; opacity: 0.3; }
-        .bento-card-header { margin-bottom: auto; display: flex; align-items: center; height: 80px; }
-        
-        .bento-card.tall { grid-row: span 2; }
-        .bento-card.wide { grid-column: span 2; }
-        .bento-card.large { grid-column: span 2; grid-row: span 2; }
-        
-        .bento-card h3 { font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; font-family: 'Syne', sans-serif; margin-top: 40px;}
-        .bento-card p { font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.5; opacity: 0.8; font-weight: 400; max-width: 90%; }
-        
-        .card-purple { background: linear-gradient(135deg, #b084e9, #8a4cdf); }
-        .card-yellow { background: linear-gradient(135deg, #FCE694, #f9c926); }
-        .card-cyan { background: linear-gradient(135deg, #85D4E0, #4fbcd2); }
-        .card-pink { background: linear-gradient(135deg, #F1B5CB, #e783a5); }
-        .card-mint { background: linear-gradient(135deg, #A7E4C4, #73cf9c); }
-        .card-emerald { background: linear-gradient(135deg, #C6E9D3, #81c394); }
-        .card-dark { background: #111113; color: #fff; }
-        
-        .bento-btn { display: inline-flex; align-items: center; justify-content: space-between; width: fit-content; gap: 40px; background: rgba(0,0,0,0.08); color: inherit; padding: 14px 28px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 32px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.1); font-family: 'Syne', sans-serif;}
-        .card-dark .bento-btn { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-        .bento-btn:hover { background: rgba(0,0,0,0.15); padding-right: 20px; }
-        .card-dark .bento-btn:hover { background: rgba(255,255,255,0.1); }
-        
-        @media (max-width: 1200px) { .bento-grid-container { grid-template-columns: repeat(3, 1fr); } .bento-card.tall { grid-row: span 1; } }
-        @media (max-width: 992px) { .bento-grid-container { grid-template-columns: repeat(2, 1fr); } .bento-hero-header h1 { font-size: 56px; } }
-        @media (max-width: 768px) { .bento-grid-container { grid-template-columns: 1fr; gap: 16px; } .bento-card.wide, .bento-card.large { grid-column: span 1; } .bento-hero-header h1 { font-size: 44px; } }
-
     </style>
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -728,172 +794,176 @@
                 <ul class="nav-links">
                     <li><a href="#ecosystem">Ecosystem</a></li>
                     <li><a href="https://docs.seismic.systems" target="_blank">Docs</a></li>
+                    <li><a href="#" class="nav-btn">Start Building</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
-    <!-- Main Ecosystem Hero Section (Plasma.to Inspired) -->
-    <section class="bento-section" id="ecosystem">
-        <div class="bento-bg-circles">
-            <div></div><div></div><div></div><div></div>
-            <div></div><div></div><div></div><div></div>
+    <!-- Main Cosmos Hero Section -->
+    <section class="cosmos-hero" id="home">
+        
+        <!-- Floating Ecosystem Cosmos Cards -->
+        <div class="atm-card" style="top: 15%; left: 10%; width: 60px; animation-delay: 0s;">
+            <img src="promis.jpg" alt="Promis">
+        </div>
+        <div class="atm-card" style="top: 25%; right: 15%; width: 80px; animation-delay: -2s; transform: rotate(12deg);">
+            <img src="shift.jpg" alt="Shift">
+        </div>
+        <div class="atm-card" style="bottom: 20%; left: 20%; width: 70px; animation-delay: -5s; transform: rotate(-15deg);">
+            <img src="dashx.svg" alt="DashX">
+        </div>
+        <div class="atm-card" style="top: 10%; right: 30%; width: 50px; animation-delay: -1s;">
+            <svg width="100%" viewBox="0 0 250 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M125 0L250 165L125 330L0 165L125 0ZM125 100L175 165L125 230L75 165L125 100Z" fill="#5876FF"/>
+            </svg>
+        </div>
+        <div class="atm-card" style="bottom: 25%; right: 10%; width: 100px; animation-delay: -4s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 82 20" fill="none" style="color: #000;">
+                <path fill="currentColor" d="M13.165 4.697a.6.6 0 0 1 .167.025c.831.256 7.408 2.663 7.615 14.692a.577.577 0 0 1-.576.586H8.767a.58.58 0 0 1-.576-.566C7.984 11.292 3.33 7.435.303 5.784c-.525-.288-.325-1.087.273-1.087zM27.883 0a.2.2 0 0 1 .192.248l-5.026 19.596a.2.2 0 0 1-.192.15h-.25a.2.2 0 0 1-.198-.2C22.343 7.875 16.5 4.03 14.073 2.947a.2.2 0 0 1-.11-.23L14.62.15A.2.2 0 0 1 14.812 0zm15.282 15.99h2.426L49.585.011h4.422L48.87 19.983h-8.987L34.748.012h4.423zm16.775 3.993h-4.28V.012h4.28zm21.17 0H76.69l-1.142-4.421H67.13l-1.142 4.421h-4.422L66.845.012h8.987zm-12.982-8.416h6.42l-1.997-7.561h-2.425z"></path>
+            </svg>
         </div>
 
-        <div class="bento-hero-header scroll-reveal">
-            <div class="bento-hero-pill">THE PRIVACY LAYER</div>
-            <h1>Bridging Web2 and Web3<br>with privacy-first fintech.</h1>
-            <p style="font-size: 20px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Secure infrastructure, private multi-currency accounts, and robust yield instruments for a new global financial system.</p>
+        <div class="cosmos-hero-content scroll-reveal">
+            <h1>THE PRIVACY LAYER<br>Bridging Web2 and Web3</h1>
+            <p class="cosmos-subtitle">Secure infrastructure, private multi-currency accounts, and robust yield instruments for a new global financial system.</p>
+            <div class="cta-buttons">
+                <a href="#ecosystem" class="btn btn-primary">Start Building</a>
+                <a href="#" class="btn btn-secondary">Explore Ecosystem</a>
+            </div>
         </div>
+    </section>
 
-        <div class="bento-grid-container">
-
-            <!-- Blend: Tall Cyan -->
-            <div class="bento-card tall card-cyan scroll-reveal" style="transition-delay: 0.1s;">
-                <div class="bento-card-plus">+</div>
-                <div>
-                    <div class="bento-card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 167 48" fill="none" style="width: 140px; height: auto; margin-bottom: 20px;">
-                          <g clip-path="url(#blend-a)">
-                            <path fill="#6FBF6B" d="M13.858 47.787a.103.103 0 0 0 .03.065l18.915-14.937 14.919-18.897s-36.346-3.862-33.864 33.769Z"/>
-                            <path fill="#009959" d="M47.722 14.016 13.888 47.85c.017.017.04.028.065.03 37.631 2.482 33.769-33.864 33.769-33.864Z"/>
-                            <path fill="#6FBF6B" d="M13.82 47.823c.02.017.044.026.068.026L16.7 23.91 13.888 0s-28.432 22.97-.068 47.823Z"/>
-                            <path fill="#009959" d="M13.888 0v47.849a.102.102 0 0 0 .067-.026C42.32 22.97 13.888 0 13.888 0Z"/>
-                          </g>
-                          <g fill="#000" clip-path="url(#blend-b)">
-                            <path d="m160.536 23.921.009-12.433a.05.05 0 0 1 .014-.036.05.05 0 0 1 .035-.014l4.59.003a.08.08 0 0 1 .056.023.078.078 0 0 1 .023.056l-.022 31.116a.086.086 0 0 1-.087.085l-4.141-.002a.073.073 0 0 1-.049-.02.072.072 0 0 1-.022-.048l-.149-2.384a.069.069 0 0 0-.012-.034.067.067 0 0 0-.03-.021.062.062 0 0 0-.067.017c-1.658 1.787-3.662 2.733-6.012 2.837-1.987.089-3.788-.39-5.401-1.434-3.592-2.326-5.125-6.66-4.685-10.843.536-5.084 4.16-9.447 9.583-9.495 2.421-.021 4.526.862 6.316 2.648a.027.027 0 0 0 .015.009c.006 0 .012 0 .018-.002a.03.03 0 0 0 .013-.011.033.033 0 0 0 .005-.017Zm.005 8.234c-.002-1.224.089-1.819-.22-2.661-1.841-5.018-8.387-5.31-10.529-.378a7.572 7.572 0 0 0-.617 3.066 7.567 7.567 0 0 0 .632 3.066c2.166 4.92 8.711 4.596 10.527-.43.305-.844.211-1.44.207-2.663Zm-34.969-8.193c1.974-2.071 5.011-2.94 7.823-2.661 4.2.417 6.689 3.486 6.701 7.607.009 3.075.011 7.625.006 13.65a.089.089 0 0 1-.09.09h-4.58a.134.134 0 0 1-.133-.132c.003-7.263.005-11.507.004-12.734 0-1.833-.642-3.334-2.412-3.968-2.547-.91-6.269.208-7.069 3.055-.101.359-.145 1.22-.132 2.587.01 1.179.012 4.893.003 11.142a.06.06 0 0 1-.003.02.077.077 0 0 1-.011.015.047.047 0 0 1-.017.011.048.048 0 0 1-.019.004h-4.673a.072.072 0 0 1-.051-.021.072.072 0 0 1-.022-.051v-20.84a.06.06 0 0 1 .019-.044.062.062 0 0 1 .044-.019h4.195a.114.114 0 0 1 .114.104l.194 2.147a.058.058 0 0 0 .013.033c.007.01.017.017.029.021a.06.06 0 0 0 .035.002.068.068 0 0 0 .032-.018Zm-23.765 9.831c.269 2.609 1.751 4.752 4.448 5.233 1.803.32 3.468.038 4.996-.847a4.064 4.064 0 0 0 1.794-2.088.21.21 0 0 1 .198-.135h3.685a.07.07 0 0 1 .054.025.085.085 0 0 1 .014.027c.003.01.003.02.002.03-.851 5.152-5.933 7.419-10.673 6.989-4.498-.409-7.903-3.591-8.883-7.94-.79-3.515-.193-7.509 2.156-10.34 2.239-2.7 5.672-3.855 9.136-3.425 6.21.771 9.089 6.479 8.393 12.234a.182.182 0 0 1-.181.16h-15.069a.069.069 0 0 0-.028.006.076.076 0 0 0-.024.017.08.08 0 0 0-.015.025.072.072 0 0 0-.003.03Zm10.951-3.694c-.179-1.66-.966-3.326-2.434-4.183-.947-.554-1.996-.806-3.147-.758-2.425.104-4.084 1.224-4.977 3.36-.22.531-.304 1-.456 1.529a.09.09 0 0 0 .014.077.088.088 0 0 0 .07.036h10.876a.055.055 0 0 0 .041-.018.05.05 0 0 0 .011-.02.058.058 0 0 0 .002-.023Zm-17.702 8.568a.066.066 0 0 1 .05.015.059.059 0 0 1 .02.046v3.885a.069.069 0 0 1-.015.044.072.072 0 0 1-.04.025c-1.583.341-3.13.394-4.643.156-2.864-.452-4.664-2.347-5.025-5.206a15.069 15.069 0 0 1-.101-1.845V11.488a.098.098 0 0 1 .097-.097h4.611a.093.093 0 0 1 .093.092v23.96c0 .72.055 1.28.165 1.681.608 2.208 3.11 1.74 4.788 1.543Zm-29.09-14.759a.03.03 0 0 0 .018.028.03.03 0 0 0 .017.002.03.03 0 0 0 .016-.009c1.791-1.785 3.898-2.667 6.32-2.643 5.424.052 9.045 4.418 9.577 9.503.438 4.184-1.098 8.52-4.693 10.844-1.614 1.043-3.416 1.52-5.403 1.43-2.352-.106-4.356-1.053-6.013-2.842a.063.063 0 0 0-.097.004.062.062 0 0 0-.012.034l-.15 2.384a.071.071 0 0 1-.072.068h-4.142a.087.087 0 0 1-.06-.025.084.084 0 0 1-.026-.06V11.5a.079.079 0 0 1 .079-.08h4.592c.013 0 .025.006.034.016a.05.05 0 0 1 .015.035v12.436Zm-.027 8.219c-.007 1.226-.105 1.821.198 2.667 1.8 5.042 8.353 5.39 10.54.47a7.56 7.56 0 0 0 .644-3.066 7.569 7.569 0 0 0-.605-3.075c-2.127-4.946-8.684-4.679-10.546.34-.313.843-.223 1.439-.23 2.664Z"/>
-                          </g>
-                          <defs>
-                            <clipPath id="blend-a">
-                              <path fill="#fff" d="M.532 0h48v48h-48z"/>
-                            </clipPath>
-                            <clipPath id="blend-b">
-                              <path fill="#fff" d="M60.532 8h105v40h-105z"/>
-                            </clipPath>
-                          </defs>
-                        </svg>
-                    </div>
+    <!-- Ecosystem List Section (Maze.co Inspired) -->
+    <section class="ecosystem-list-section" id="ecosystem">
+        <div class="ecosystem-list scroll-reveal">
+            
+            <!-- Blend -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 167 48" fill="none">
+                      <g clip-path="url(#blend-a)"><path fill="#6FBF6B" d="M13.858 47.787a.103.103 0 0 0 .03.065l18.915-14.937 14.919-18.897s-36.346-3.862-33.864 33.769Z"/><path fill="#009959" d="M47.722 14.016 13.888 47.85c.017.017.04.028.065.03 37.631 2.482 33.769-33.864 33.769-33.864Z"/><path fill="#6FBF6B" d="M13.82 47.823c.02.017.044.026.068.026L16.7 23.91 13.888 0s-28.432 22.97-.068 47.823Z"/><path fill="#009959" d="M13.888 0v47.849a.102.102 0 0 0 .067-.026C42.32 22.97 13.888 0 13.888 0Z"/></g>
+                      <g fill="#000" clip-path="url(#blend-b)"><path d="m160.536 23.921.009-12.433a.05.05 0 0 1 .014-.036.05.05 0 0 1 .035-.014l4.59.003a.08.08 0 0 1 .056.023.078.078 0 0 1 .023.056l-.022 31.116a.086.086 0 0 1-.087.085l-4.141-.002a.073.073 0 0 1-.049-.02.072.072 0 0 1-.022-.048l-.149-2.384a.069.069 0 0 0-.012-.034.067.067 0 0 0-.03-.021.062.062 0 0 0-.067.017c-1.658 1.787-3.662 2.733-6.012 2.837-1.987.089-3.788-.39-5.401-1.434-3.592-2.326-5.125-6.66-4.685-10.843.536-5.084 4.16-9.447 9.583-9.495 2.421-.021 4.526.862 6.316 2.648a.027.027 0 0 0 .015.009c.006 0 .012 0 .018-.002a.03.03 0 0 0 .013-.011.033.033 0 0 0 .005-.017Zm.005 8.234c-.002-1.224.089-1.819-.22-2.661-1.841-5.018-8.387-5.31-10.529-.378a7.572 7.572 0 0 0-.617 3.066 7.567 7.567 0 0 0 .632 3.066c2.166 4.92 8.711 4.596 10.527-.43.305-.844.211-1.44.207-2.663Zm-34.969-8.193c1.974-2.071 5.011-2.94 7.823-2.661 4.2.417 6.689 3.486 6.701 7.607.009 3.075.011 7.625.006 13.65a.089.089 0 0 1-.09.09h-4.58a.134.134 0 0 1-.133-.132c.003-7.263.005-11.507.004-12.734 0-1.833-.642-3.334-2.412-3.968-2.547-.91-6.269.208-7.069 3.055-.101.359-.145 1.22-.132 2.587.01 1.179.012 4.893.003 11.142a.06.06 0 0 1-.003.02.077.077 0 0 1-.011.015.047.047 0 0 1-.017.011.048.048 0 0 1-.019.004h-4.673a.072.072 0 0 1-.051-.021.072.072 0 0 1-.022-.051v-20.84a.06.06 0 0 1 .019-.044.062.062 0 0 1 .044-.019h4.195a.114.114 0 0 1 .114.104l.194 2.147a.058.058 0 0 0 .013.033c.007.01.017.017.029.021a.06.06 0 0 0 .035.002.068.068 0 0 0 .032-.018Zm-23.765 9.831c.269 2.609 1.751 4.752 4.448 5.233 1.803.32 3.468.038 4.996-.847a4.064 4.064 0 0 0 1.794-2.088.21.21 0 0 1 .198-.135h3.685a.07.07 0 0 1 .054.025.085.085 0 0 1 .014.027c.003.01.003.02.002.03-.851 5.152-5.933 7.419-10.673 6.989-4.498-.409-7.903-3.591-8.883-7.94-.79-3.515-.193-7.509 2.156-10.34 2.239-2.7 5.672-3.855 9.136-3.425 6.21.771 9.089 6.479 8.393 12.234a.182.182 0 0 1-.181.16h-15.069a.069.069 0 0 0-.028.006.076.076 0 0 0-.024.017.08.08 0 0 0-.015.025.072.072 0 0 0-.003.03Zm10.951-3.694c-.179-1.66-.966-3.326-2.434-4.183-.947-.554-1.996-.806-3.147-.758-2.425.104-4.084 1.224-4.977 3.36-.22.531-.304 1-.456 1.529a.09.09 0 0 0 .014.077.088.088 0 0 0 .07.036h10.876a.055.055 0 0 0 .041-.018.05.05 0 0 0 .011-.02.058.058 0 0 0 .002-.023Zm-17.702 8.568a.066.066 0 0 1 .05.015.059.059 0 0 1 .02.046v3.885a.069.069 0 0 1-.015.044.072.072 0 0 1-.04.025c-1.583.341-3.13.394-4.643.156-2.864-.452-4.664-2.347-5.025-5.206a15.069 15.069 0 0 1-.101-1.845V11.488a.098.098 0 0 1 .097-.097h4.611a.093.093 0 0 1 .093.092v23.96c0 .72.055 1.28.165 1.681.608 2.208 3.11 1.74 4.788 1.543Zm-29.09-14.759a.03.03 0 0 0 .018.028.03.03 0 0 0 .017.002.03.03 0 0 0 .016-.009c1.791-1.785 3.898-2.667 6.32-2.643 5.424.052 9.045 4.418 9.577 9.503.438 4.184-1.098 8.52-4.693 10.844-1.614 1.043-3.416 1.52-5.403 1.43-2.352-.106-4.356-1.053-6.013-2.842a.063.063 0 0 0-.097.004.062.062 0 0 0-.012.034l-.15 2.384a.071.071 0 0 1-.072.068h-4.142a.087.087 0 0 1-.06-.025.084.084 0 0 1-.026-.06V11.5a.079.079 0 0 1 .079-.08h4.592c.013 0 .025.006.034.016a.05.05 0 0 1 .015.035v12.436Zm-.027 8.219c-.007 1.226-.105 1.821.198 2.667 1.8 5.042 8.353 5.39 10.54.47a7.56 7.56 0 0 0 .644-3.066 7.569 7.569 0 0 0-.605-3.075c-2.127-4.946-8.684-4.679-10.546.34-.313.843-.223 1.439-.23 2.664Z"/></g>
+                      <defs><clipPath id="blend-a"><path fill="#fff" d="M.532 0h48v48h-48z"/></clipPath><clipPath id="blend-b"><path fill="#fff" d="M60.532 8h105v40h-105z"/></clipPath></defs>
+                    </svg>
+                </div>
+                <div class="eco-content">
+                    <h3>Blend</h3>
                     <p>Treasury-as-a-service for fintechs using private multi-currency accounts and robust yield instruments.</p>
+                    <a href="https://blend.money/" target="_blank" class="eco-link">Visit Blend —></a>
                 </div>
-                <a href="https://blend.money/" target="_blank" class="bento-btn">Visit Blend <span>↗</span></a>
             </div>
 
-            <!-- Vend: Tall Pink -->
-            <div class="bento-card tall card-pink scroll-reveal" style="transition-delay: 0.2s;">
-                <div class="bento-card-plus">+</div>
-                <div>
-                   <div class="bento-card-header">
-                        <img src="https://framerusercontent.com/images/SARuWkuMvBKRbeQeXHS7HCejxQw.png" alt="Vend" style="width: 140px; height: auto; margin-bottom: 20px;">
-                    </div>
+            <!-- Vend -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <img src="https://framerusercontent.com/images/SARuWkuMvBKRbeQeXHS7HCejxQw.png" alt="Vend">
+                </div>
+                <div class="eco-content">
+                    <h3>Vend</h3>
                     <p>Infrastructure for autonomous commerce. Self-financing machines powered by revenue-based credit.</p>
+                    <a href="https://vend.money/" target="_blank" class="eco-link">Vend Platform —></a>
                 </div>
-                <a href="https://vend.money/" target="_blank" class="bento-btn">Vend Platform <span>↗</span></a>
             </div>
 
-            <!-- Brookwell: Large Mint (Third Section) -->
-            <div class="bento-card large card-mint scroll-reveal" style="transition-delay: 0.3s;">
-                <div class="bento-card-plus">+</div>
-                <div>
-                    <div class="bento-card-header">
-                        <img src="https://www.brookwell.com/_next/image?url=%2Flogo.png&w=1080&q=75" alt="Brookwell" style="width: 56px; height: auto; border-radius: 12px; margin-bottom: 20px;">
-                    </div>
+            <!-- Brookwell -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <img src="https://www.brookwell.com/_next/image?url=%2Flogo.png&w=1080&q=75" alt="Brookwell">
+                </div>
+                <div class="eco-content">
                     <h3>Brookwell</h3>
-                    <p style="font-size: 16px;">Private stablecoin cash accounts. Earn DeFi yields while securely paying rent and payroll via normal channels.</p>
+                    <p>Private stablecoin cash accounts. Earn DeFi yields while securely paying rent and payroll via normal channels.</p>
+                    <a href="https://www.brookwell.com/" target="_blank" class="eco-link">View Brookwell —></a>
                 </div>
-                <a href="https://www.brookwell.com/" target="_blank" class="bento-btn" style="width: auto; align-self: flex-start; padding: 16px 40px;">View Brookwell <span>↗</span></a>
             </div>
 
-            <!-- Cred Protocol: Yellow -->
-            <div class="bento-card card-yellow scroll-reveal" style="transition-delay: 0.4s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <svg width="32" height="42" viewBox="0 0 250 330" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 12px;">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M125 0L250 165L125 330L0 165L125 0ZM125 100L175 165L125 230L75 165L125 100Z" fill="#5876FF"/>
-                        </svg>
-                    </div>
+            <!-- Cred Protocol -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <svg width="40" height="40" viewBox="0 0 250 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M125 0L250 165L125 330L0 165L125 0ZM125 100L175 165L125 230L75 165L125 100Z" fill="#5876FF"/>
+                    </svg>
+                </div>
+                <div class="eco-content">
                     <h3>Cred Protocol</h3>
                     <p>Private credit & working capital. Underwriting and lending for real-world businesses with zero data leaks.</p>
+                    <a href="https://credprotocol.com/" target="_blank" class="eco-link">Explore Cred —></a>
                 </div>
-                <a href="https://credprotocol.com/" target="_blank" class="bento-btn">Explore Cred <span>↗</span></a>
             </div>
 
-            <!-- Specie: Wide Emerald -->
-            <div class="bento-card wide card-emerald scroll-reveal" style="transition-delay: 0.5s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293 74" fill="none" style="width: 140px; height: auto; margin-bottom: 12px;"><path fill="#151E1C" d="M121.616 25.483c-1.02 0-1.84-.786-2.196-1.742-.463-1.241-1.278-2.261-2.444-3.06-1.657-1.146-3.813-1.719-6.467-1.719-1.866 0-3.467.275-4.802.824-1.336.55-2.357 1.295-3.065 2.237-.708.941-1.07 2.016-1.086 3.225 0 1.004.233 1.875.7 2.613.483.737 1.134 1.365 1.955 1.883.82.502 1.729.926 2.726 1.271a29.92 29.92 0 0 0 3.017.871l4.633 1.13a32.47 32.47 0 0 1 5.381 1.719c1.738.721 3.29 1.632 4.658 2.73a12.176 12.176 0 0 1 3.281 3.979c.805 1.553 1.207 3.374 1.207 5.461 0 2.825-.74 5.312-2.22 7.462-1.48 2.135-3.62 3.806-6.419 5.014-2.783 1.193-6.153 1.79-10.111 1.79-3.845 0-7.183-.581-10.014-1.742-2.816-1.162-5.02-2.857-6.612-5.085-1.225-1.731-2.013-3.755-2.364-6.073-.17-1.123.752-2.072 1.888-2.072h4.873c1.045 0 1.881.818 2.182 1.82a6.614 6.614 0 0 0 1.263 2.37c.933 1.114 2.148 1.946 3.644 2.495 1.512.55 3.201.824 5.068.824 1.946 0 3.651-.282 5.115-.847 1.48-.581 2.639-1.381 3.475-2.401.837-1.036 1.263-2.245 1.279-3.626-.016-1.255-.394-2.29-1.134-3.107-.74-.832-1.778-1.522-3.113-2.071-1.319-.566-2.863-1.068-4.633-1.507l-5.623-1.413c-4.07-1.02-7.287-2.566-9.652-4.637-2.349-2.087-3.523-4.857-3.523-8.31 0-2.84.788-5.328 2.365-7.462 1.592-2.134 3.756-3.79 6.491-4.967 2.735-1.193 5.832-1.79 9.29-1.79 3.508 0 6.58.597 9.219 1.79 2.654 1.177 4.737 2.817 6.25 4.92a12.08 12.08 0 0 1 2.159 5.177c.183 1.104-.736 2.026-1.855 2.026h-4.786ZM135.651 74a2 2 0 0 1-2-2V26.283a2 2 0 0 1 2-2h4.591a2 2 0 0 1 2 2v3.979h.507c.45-.879 1.086-1.813 1.906-2.801.821-1.005 1.931-1.86 3.33-2.566 1.4-.722 3.186-1.083 5.357-1.083 2.864 0 5.446.714 7.747 2.142 2.316 1.412 4.15 3.508 5.501 6.285 1.368 2.762 2.052 6.152 2.052 10.17 0 3.97-.668 7.344-2.003 10.122-1.336 2.778-3.153 4.897-5.454 6.356-2.3 1.46-4.907 2.19-7.818 2.19-2.124 0-3.886-.346-5.285-1.036-1.4-.691-2.526-1.523-3.379-2.496-.836-.988-1.488-1.922-1.954-2.801h-.362V72a2 2 0 0 1-2 2h-4.736Zm6.567-31.638c0 2.338.338 4.386 1.013 6.144.692 1.757 1.682 3.13 2.969 4.12 1.303.972 2.879 1.459 4.729 1.459 1.931 0 3.548-.502 4.851-1.507 1.303-1.02 2.284-2.409 2.944-4.166.675-1.774 1.013-3.79 1.013-6.05 0-2.245-.33-4.238-.989-5.98-.66-1.742-1.641-3.107-2.944-4.096-1.303-.988-2.928-1.483-4.875-1.483-1.866 0-3.45.479-4.754 1.436-1.303.958-2.292 2.3-2.968 4.026-.659 1.726-.989 3.758-.989 6.097Zm47.256 18.785c-3.717 0-6.926-.753-9.629-2.26-2.686-1.522-4.754-3.672-6.201-6.45-1.448-2.793-2.172-6.081-2.172-9.863 0-3.72.724-6.984 2.172-9.793 1.464-2.825 3.507-5.022 6.129-6.592 2.622-1.585 5.703-2.377 9.242-2.377 2.285 0 4.44.36 6.467 1.083a14.682 14.682 0 0 1 5.406 3.295c1.576 1.491 2.815 3.39 3.716 5.697.901 2.291 1.351 5.022 1.351 8.192v2.613h-30.381v-5.744h22.008c-.016-1.632-.378-3.084-1.086-4.355a7.79 7.79 0 0 0-2.968-3.036c-1.255-.738-2.719-1.107-4.392-1.107-1.786 0-3.354.424-4.706 1.271a8.852 8.852 0 0 0-3.161 3.296c-.74 1.35-1.118 2.833-1.134 4.45v5.013c0 2.103.394 3.908 1.182 5.415.789 1.49 1.891 2.636 3.306 3.436 1.416.785 3.073 1.177 4.971 1.177 1.271 0 2.421-.172 3.451-.517a7.69 7.69 0 0 0 2.679-1.578 6.287 6.287 0 0 0 1.013-1.187c.503-.76 1.333-1.309 2.24-1.21l4.349.477c1.201.132 2.025 1.301 1.535 2.405a12.234 12.234 0 0 1-2.212 3.352c-1.432 1.554-3.265 2.763-5.502 3.626-2.236.847-4.794 1.27-7.673 1.27Zm36.981 0c-3.7 0-6.877-.793-9.531-2.378-2.639-1.585-4.674-3.774-6.106-6.567-1.415-2.81-2.123-6.042-2.123-9.7 0-3.671.724-6.912 2.172-9.721 1.448-2.825 3.491-5.022 6.129-6.592 2.654-1.585 5.792-2.377 9.411-2.377 3.009 0 5.671.541 7.988 1.624 2.332 1.067 4.19 2.582 5.574 4.543a12.694 12.694 0 0 1 2.058 4.697c.249 1.136-.684 2.13-1.847 2.13h-4.546c-.958 0-1.754-.693-2.116-1.58a7.635 7.635 0 0 0-1.947-2.775c-1.255-1.177-2.936-1.765-5.043-1.765-1.786 0-3.354.47-4.706 1.412-1.351.926-2.405 2.26-3.161 4.002-.74 1.742-1.11 3.83-1.11 6.262 0 2.464.37 4.582 1.11 6.356.74 1.757 1.778 3.115 3.113 4.072 1.351.942 2.936 1.413 4.754 1.413 1.287 0 2.437-.236 3.451-.707a6.91 6.91 0 0 0 2.582-2.095 7.232 7.232 0 0 0 .969-1.742c.349-.889 1.143-1.577 2.098-1.577h4.536c1.168 0 2.103 1.004 1.848 2.145a13.525 13.525 0 0 1-1.995 4.658c-1.335 1.962-3.153 3.5-5.453 4.614-2.301 1.099-5.004 1.648-8.109 1.648Zm21.994-.707a2 2 0 0 1-2-2V26.284a2 2 0 0 1 2-2h4.735a2 2 0 0 1 2 2V58.44a2 2 0 0 1-2 2h-4.735Zm2.392-41.29c-1.384 0-2.574-.447-3.572-1.341-.997-.91-1.496-2-1.496-3.272 0-1.287.499-2.378 1.496-3.272.998-.91 2.188-1.366 3.572-1.366 1.399 0 2.59.456 3.571 1.366.998.894 1.496 1.985 1.496 3.272 0 1.271-.498 2.362-1.496 3.272-.981.894-2.172 1.342-3.571 1.342Zm25.678 41.997c-3.716 0-6.925-.753-9.628-2.26-2.687-1.522-4.754-3.672-6.202-6.45-1.448-2.793-2.172-6.081-2.172-9.863 0-3.72.724-6.984 2.172-9.793 1.464-2.825 3.507-5.022 6.129-6.592 2.623-1.585 5.703-2.377 9.243-2.377 2.284 0 4.44.36 6.467 1.083a14.67 14.67 0 0 1 5.405 3.295c1.577 1.491 2.816 3.39 3.717 5.697.9 2.291 1.351 5.022 1.351 8.192v.613a2 2 0 0 1-2 2H262.62v-5.744h22.007c-.016-1.632-.378-3.084-1.086-4.355a7.782 7.782 0 0 0-2.968-3.036c-1.255-.738-2.719-1.107-4.392-1.107-1.785 0-3.354.424-4.705 1.271a8.844 8.844 0 0 0-3.161 3.296c-.74 1.35-1.118 2.833-1.135 4.45v5.013c0 2.103.395 3.908 1.183 5.415.788 1.49 1.89 2.636 3.306 3.436 1.416.785 3.073 1.177 4.971 1.177 1.271 0 2.421-.172 3.451-.517a7.696 7.696 0 0 0 2.678-1.578 6.329 6.329 0 0 0 1.014-1.187c.503-.76 1.333-1.309 2.24-1.21l4.349.477c1.201.132 2.025 1.301 1.534 2.405a12.253 12.253 0 0 1-2.211 3.352c-1.432 1.554-3.266 2.763-5.502 3.626-2.236.847-4.794 1.27-7.674 1.27Z"/><ellipse cx="39.73" cy="10.301" fill="#425E58" rx="39.73" ry="10.301" transform="matrix(.8713 -.49073 .50932 .86057 1.15 38.994)"/><path fill="#425E58" d="M69.45 30.836c.066.087.129.175.184.268C72.53 36 59.382 48.698 40.264 59.466 21.145 70.234 3.297 74.994.399 70.098c-1.761-2.978 2.415-8.84 10.258-15.4 3.395 4.444 20.926-.336 39.682-10.9 7.49-4.218 14.06-8.736 19.111-12.962Z"/></svg>
-                    </div>
-                    <p style="font-size: 16px;">Modern banking for global businesses. Send, receive, and manage money worldwide with fast settlement across local and global rails.</p>
+            <!-- Specie -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293 74" fill="none" style="width: 100%;"><path fill="#151E1C" d="M121.616 25.483c-1.02 0-1.84-.786-2.196-1.742-.463-1.241-1.278-2.261-2.444-3.06-1.657-1.146-3.813-1.719-6.467-1.719-1.866 0-3.467.275-4.802.824-1.336.55-2.357 1.295-3.065 2.237-.708.941-1.07 2.016-1.086 3.225 0 1.004.233 1.875.7 2.613.483.737 1.134 1.365 1.955 1.883.82.502 1.729.926 2.726 1.271a29.92 29.92 0 0 0 3.017.871l4.633 1.13a32.47 32.47 0 0 1 5.381 1.719c1.738.721 3.29 1.632 4.658 2.73a12.176 12.176 0 0 1 3.281 3.979c.805 1.553 1.207 3.374 1.207 5.461 0 2.825-.74 5.312-2.22 7.462-1.48 2.135-3.62 3.806-6.419 5.014-2.783 1.193-6.153 1.79-10.111 1.79-3.845 0-7.183-.581-10.014-1.742-2.816-1.162-5.02-2.857-6.612-5.085-1.225-1.731-2.013-3.755-2.364-6.073-.17-1.123.752-2.072 1.888-2.072h4.873c1.045 0 1.881.818 2.182 1.82a6.614 6.614 0 0 0 1.263 2.37c.933 1.114 2.148 1.946 3.644 2.495 1.512.55 3.201.824 5.068.824 1.946 0 3.651-.282 5.115-.847 1.48-.581 2.639-1.381 3.475-2.401.837-1.036 1.263-2.245 1.279-3.626-.016-1.255-.394-2.29-1.134-3.107-.74-.832-1.778-1.522-3.113-2.071-1.319-.566-2.863-1.068-4.633-1.507l-5.623-1.413c-4.07-1.02-7.287-2.566-9.652-4.637-2.349-2.087-3.523-4.857-3.523-8.31 0-2.84.788-5.328 2.365-7.462 1.592-2.134 3.756-3.79 6.491-4.967 2.735-1.193 5.832-1.79 9.29-1.79 3.508 0 6.58.597 9.219 1.79 2.654 1.177 4.737 2.817 6.25 4.92a12.08 12.08 0 0 1 2.159 5.177c.183 1.104-.736 2.026-1.855 2.026h-4.786ZM135.651 74a2 2 0 0 1-2-2V26.283a2 2 0 0 1 2-2h4.591a2 2 0 0 1 2 2v3.979h.507c.45-.879 1.086-1.813 1.906-2.801.821-1.005 1.931-1.86 3.33-2.566 1.4-.722 3.186-1.083 5.357-1.083 2.864 0 5.446.714 7.747 2.142 2.316 1.412 4.15 3.508 5.501 6.285 1.368 2.762 2.052 6.152 2.052 10.17 0 3.97-.668 7.344-2.003 10.122-1.336 2.778-3.153 4.897-5.454 6.356-2.3 1.46-4.907 2.19-7.818 2.19-2.124 0-3.886-.346-5.285-1.036-1.4-.691-2.526-1.523-3.379-2.496-.836-.988-1.488-1.922-1.954-2.801h-.362V72a2 2 0 0 1-2 2h-4.736Zm6.567-31.638c0 2.338.338 4.386 1.013 6.144.692 1.757 1.682 3.13 2.969 4.12 1.303.972 2.879 1.459 4.729 1.459 1.931 0 3.548-.502 4.851-1.507 1.303-1.02 2.284-2.409 2.944-4.166.675-1.774 1.013-3.79 1.013-6.05 0-2.245-.33-4.238-.989-5.98-.66-1.742-1.641-3.107-2.944-4.096-1.303-.988-2.928-1.483-4.875-1.483-1.866 0-3.45.479-4.754 1.436-1.303.958-2.292 2.3-2.968 4.026-.659 1.726-.989 3.758-.989 6.097Zm47.256 18.785c-3.717 0-6.926-.753-9.629-2.26-2.686-1.522-4.754-3.672-6.201-6.45-1.448-2.793-2.172-6.081-2.172-9.863 0-3.72.724-6.984 2.172-9.793 1.464-2.825 3.507-5.022 6.129-6.592 2.622-1.585 5.703-2.377 9.242-2.377 2.285 0 4.44.36 6.467 1.083a14.682 14.682 0 0 1 5.406 3.295c1.576 1.491 2.815 3.39 3.716 5.697.901 2.291 1.351 5.022 1.351 8.192v2.613h-30.381v-5.744h22.008c-.016-1.632-.378-3.084-1.086-4.355a7.79 7.79 0 0 0-2.968-3.036c-1.255-.738-2.719-1.107-4.392-1.107-1.786 0-3.354.424-4.706 1.271a8.852 8.852 0 0 0-3.161 3.296c-.74 1.35-1.118 2.833-1.134 4.45v5.013c0 2.103.394 3.908 1.182 5.415.789 1.49 1.891 2.636 3.306 3.436 1.416.785 3.073 1.177 4.971 1.177 1.271 0 2.421-.172 3.451-.517a7.69 7.69 0 0 0 2.679-1.578 6.287 6.287 0 0 0 1.013-1.187c.503-.76 1.333-1.309 2.24-1.21l4.349.477c1.201.132 2.025 1.301 1.535 2.405a12.234 12.234 0 0 1-2.212 3.352c-1.432 1.554-3.265 2.763-5.502 3.626-2.236.847-4.794 1.27-7.673 1.27Zm36.981 0c-3.7 0-6.877-.793-9.531-2.378-2.639-1.585-4.674-3.774-6.106-6.567-1.415-2.81-2.123-6.042-2.123-9.7 0-3.671.724-6.912 2.172-9.721 1.448-2.825 3.491-5.022 6.129-6.592 2.654-1.585 5.792-2.377 9.411-2.377 3.009 0 5.671.541 7.988 1.624 2.332 1.067 4.19 2.582 5.574 4.543a12.694 12.694 0 0 1 2.058 4.697c.249 1.136-.684 2.13-1.847 2.13h-4.546c-.958 0-1.754-.693-2.116-1.58a7.635 7.635 0 0 0-1.947-2.775c-1.255-1.177-2.936-1.765-5.043-1.765-1.786 0-3.354.47-4.706 1.412-1.351.926-2.405 2.26-3.161 4.002-.74 1.742-1.11 3.83-1.11 6.262 0 2.464.37 4.582 1.11 6.356.74 1.757 1.778 3.115 3.113 4.072 1.351.942 2.936 1.413 4.754 1.413 1.287 0 2.437-.236 3.451-.707a6.91 6.91 0 0 0 2.582-2.095 7.232 7.232 0 0 0 .969-1.742c.349-.889 1.143-1.577 2.098-1.577h4.536c1.168 0 2.103 1.004 1.848 2.145a13.525 13.525 0 0 1-1.995 4.658c-1.335 1.962-3.153 3.5-5.453 4.614-2.301 1.099-5.004 1.648-8.109 1.648Zm21.994-.707a2 2 0 0 1-2-2V26.284a2 2 0 0 1 2-2h4.735a2 2 0 0 1 2 2V58.44a2 2 0 0 1-2 2h-4.735Zm2.392-41.29c-1.384 0-2.574-.447-3.572-1.341-.997-.91-1.496-2-1.496-3.272 0-1.287.499-2.378 1.496-3.272.998-.91 2.188-1.366 3.572-1.366 1.399 0 2.59.456 3.571 1.366.998.894 1.496 1.985 1.496 3.272 0 1.271-.498 2.362-1.496 3.272-.981.894-2.172 1.342-3.571 1.342Zm25.678 41.997c-3.716 0-6.925-.753-9.628-2.26-2.687-1.522-4.754-3.672-6.202-6.45-1.448-2.793-2.172-6.081-2.172-9.863 0-3.72.724-6.984 2.172-9.793 1.464-2.825 3.507-5.022 6.129-6.592 2.623-1.585 5.703-2.377 9.243-2.377 2.284 0 4.44.36 6.467 1.083a14.67 14.67 0 0 1 5.405 3.295c1.577 1.491 2.816 3.39 3.717 5.697.9 2.291 1.351 5.022 1.351 8.192v.613a2 2 0 0 1-2 2H262.62v-5.744h22.007c-.016-1.632-.378-3.084-1.086-4.355a7.782 7.782 0 0 0-2.968-3.036c-1.255-.738-2.719-1.107-4.392-1.107-1.785 0-3.354.424-4.705 1.271a8.844 8.844 0 0 0-3.161 3.296c-.74 1.35-1.118 2.833-1.135 4.45v5.013c0 2.103.395 3.908 1.183 5.415.788 1.49 1.89 2.636 3.306 3.436 1.416.785 3.073 1.177 4.971 1.177 1.271 0 2.421-.172 3.451-.517a7.696 7.696 0 0 0 2.678-1.578 6.329 6.329 0 0 0 1.014-1.187c.503-.76 1.333-1.309 2.24-1.21l4.349.477c1.201.132 2.025 1.301 1.534 2.405a12.253 12.253 0 0 1-2.211 3.352c-1.432 1.554-3.266 2.763-5.502 3.626-2.236.847-4.794 1.27-7.674 1.27Z"/><ellipse cx="39.73" cy="10.301" fill="#425E58" rx="39.73" ry="10.301" transform="matrix(.8713 -.49073 .50932 .86057 1.15 38.994)"/><path fill="#425E58" d="M69.45 30.836c.066.087.129.175.184.268C72.53 36 59.382 48.698 40.264 59.466 21.145 70.234 3.297 74.994.399 70.098c-1.761-2.978 2.415-8.84 10.258-15.4 3.395 4.444 20.926-.336 39.682-10.9 7.49-4.218 14.06-8.736 19.111-12.962Z"/></svg>
                 </div>
-                <a href="https://www.specie.finance/" target="_blank" class="bento-btn" style="width: auto; align-self: flex-start;">Explore Specie <span>↗</span></a>
+                <div class="eco-content">
+                    <h3>Specie</h3>
+                    <p>Modern banking for global businesses. Send, receive, and manage money worldwide with fast settlement across local and global rails.</p>
+                    <a href="https://www.specie.finance/" target="_blank" class="eco-link">Explore Specie —></a>
+                </div>
             </div>
 
-            <!-- New Moats: Wide Dark -->
-            <div class="bento-card wide card-dark scroll-reveal" style="transition-delay: 0.6s;">
-                <div class="bento-card-plus" style="opacity: 0.3;">+</div>
-                <div style="margin-top:20px;">
-                    <h3>New Market Moats</h3>
-                    <p>Privacy completely unblocks entry into finance, healthcare, identity, and supply chain solutions. A winner-take-most privacy moat creates massive long-term stickiness.</p>
+            <!-- Via -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="82" height="20" fill="none" style="color: #000;">
+                        <path fill="currentColor" d="M13.165 4.697a.6.6 0 0 1 .167.025c.831.256 7.408 2.663 7.615 14.692a.577.577 0 0 1-.576.586H8.767a.58.58 0 0 1-.576-.566C7.984 11.292 3.33 7.435.303 5.784c-.525-.288-.325-1.087.273-1.087zM27.883 0a.2.2 0 0 1 .192.248l-5.026 19.596a.2.2 0 0 1-.192.15h-.25a.2.2 0 0 1-.198-.2C22.343 7.875 16.5 4.03 14.073 2.947a.2.2 0 0 1-.11-.23L14.62.15A.2.2 0 0 1 14.812 0zm15.282 15.99h2.426L49.585.011h4.422L48.87 19.983h-8.987L34.748.012h4.423zm16.775 3.993h-4.28V.012h4.28zm21.17 0H76.69l-1.142-4.421H67.13l-1.142 4.421h-4.422L66.845.012h8.987zm-12.982-8.416h6.42l-1.997-7.561h-2.425z"></path>
+                    </svg>
                 </div>
-                <a href="#" class="bento-btn" style="width: auto; align-self: flex-start;">Learn More <span>→</span></a>
-            </div>
-
-            <!-- Via: Purple (1 col) -->
-            <div class="bento-card card-purple scroll-reveal" style="transition-delay: 0.7s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="82" height="20" fill="none" style="margin-bottom: 12px; color: #000;">
-                            <path fill="currentColor" d="M13.165 4.697a.6.6 0 0 1 .167.025c.831.256 7.408 2.663 7.615 14.692a.577.577 0 0 1-.576.586H8.767a.58.58 0 0 1-.576-.566C7.984 11.292 3.33 7.435.303 5.784c-.525-.288-.325-1.087.273-1.087zM27.883 0a.2.2 0 0 1 .192.248l-5.026 19.596a.2.2 0 0 1-.192.15h-.25a.2.2 0 0 1-.198-.2C22.343 7.875 16.5 4.03 14.073 2.947a.2.2 0 0 1-.11-.23L14.62.15A.2.2 0 0 1 14.812 0zm15.282 15.99h2.426L49.585.011h4.422L48.87 19.983h-8.987L34.748.012h4.423zm16.775 3.993h-4.28V.012h4.28zm21.17 0H76.69l-1.142-4.421H67.13l-1.142 4.421h-4.422L66.845.012h8.987zm-12.982-8.416h6.42l-1.997-7.561h-2.425z"></path>
-                        </svg>
-                    </div>
+                <div class="eco-content">
                     <h3>Via</h3>
                     <p>Stablecoin-first finance. Borderless access to capital, seamless payments, and premium yield.</p>
+                    <a href="https://www.via.xyz/" target="_blank" class="eco-link">Explore Via —></a>
                 </div>
-                <a href="https://www.via.xyz/" target="_blank" class="bento-btn">Explore Via <span>↗</span></a>
             </div>
 
-            <!-- Shift: Cyan -->
-            <div class="bento-card wide card-cyan scroll-reveal" style="transition-delay: 0.8s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <img src="shift.jpg" alt="Shift" style="height: 36px; width: auto; margin-bottom: 20px; border-radius: 6px;">
-                    </div>
+            <!-- Shift -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <img src="shift.jpg" alt="Shift" style="border-radius: 6px;">
+                </div>
+                <div class="eco-content">
                     <h3>Shift</h3>
-                    <p style="font-size: 16px;">The Membership That Pays You Back. Elite financial services, lifestyle privileges, and exclusive perks driven by real yield models.</p>
+                    <p>The Membership That Pays You Back. Elite financial services, lifestyle privileges, and exclusive perks driven by real yield models.</p>
+                    <a href="https://www.shift-apply.com/" target="_blank" class="eco-link">Visit Shift —></a>
                 </div>
-                <a href="https://www.shift-apply.com/" target="_blank" class="bento-btn" style="width: auto; align-self: flex-start;">Visit Shift <span>↗</span></a>
             </div>
 
-            <!-- DashX: Pink -->
-            <div class="bento-card wide card-pink scroll-reveal" style="transition-delay: 0.9s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <img src="dashx.svg" alt="DashX" style="height: 36px; width: auto; margin-bottom: 20px; border-radius: 6px;">
-                    </div>
+            <!-- DashX -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <img src="dashx.svg" alt="DashX" style="border-radius: 6px;">
+                </div>
+                <div class="eco-content">
                     <h3>DashX</h3>
-                    <p style="font-size: 16px;">Cross-border payments powered by crypto. Accept USDC, track transactions, and withdraw INR globally through one unified stack.</p>
+                    <p>Cross-border payments powered by crypto. Accept USDC, track transactions, and withdraw INR globally through one unified stack.</p>
+                    <a href="https://dashx.xyz/" target="_blank" class="eco-link">Use DashX —></a>
                 </div>
-                <a href="https://dashx.xyz/" target="_blank" class="bento-btn" style="width: auto; align-self: flex-start;">Use DashX <span>↗</span></a>
             </div>
 
-            <!-- Promis: Mint -->
-            <div class="bento-card wide card-mint scroll-reveal" style="transition-delay: 1.0s;">
-                <div class="bento-card-plus">+</div>
-                <div style="margin-top:20px;">
-                    <div class="bento-card-header">
-                        <img src="promis.jpg" alt="Promis" style="height: 36px; width: auto; margin-bottom: 20px; border-radius: 6px;">
-                    </div>
-                    <h3>Promis</h3>
-                    <p style="font-size: 16px;">Real Yield. Real Cashflow. Powering ProUSD to connect DeFi with the real economy for sustainable yields while financing businesses.</p>
+            <!-- Promis -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <img src="promis.jpg" alt="Promis" style="border-radius: 6px;">
                 </div>
-                <a href="https://www.promis.fi/index.html" target="_blank" class="bento-btn" style="width: auto; align-self: flex-start;">Explore Promis <span>↗</span></a>
+                <div class="eco-content">
+                    <h3>Promis</h3>
+                    <p>Real Yield. Real Cashflow. Powering ProUSD to connect DeFi with the real economy for sustainable yields while financing businesses.</p>
+                    <a href="https://www.promis.fi/index.html" target="_blank" class="eco-link">Explore Promis —></a>
+                </div>
+            </div>
+
+            <!-- New Moats -->
+            <div class="eco-list-item">
+                <div class="eco-logo-box">
+                    <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -1px; text-transform: uppercase;">Moat</div>
+                </div>
+                <div class="eco-content">
+                    <h3>New Market Moats</h3>
+                    <p>Privacy completely unblocks entry into finance, healthcare, identity, and supply chain solutions. A winner-take-most privacy moat creates massive long-term stickiness.</p>
+                    <a href="#" class="eco-link">Learn More —></a>
+                </div>
             </div>
             
         </div>
