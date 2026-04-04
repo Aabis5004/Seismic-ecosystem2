@@ -3,701 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seismic - The Encrypted Blockchain</title>
+    <title>Seismic | The Private Layer for Web3 & Fintech</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #ffffff;
-            --bg-secondary: #f8fafc;
-            --accent-primary: #523542; /* Dark Plum */
-            --accent-secondary: #D0A0B7; /* Rose Lavender */
-            --accent-purple: #6A525D; /* Muted Plum */
-            --text-primary: #0f172a;
+            --emerald: #00211d; /* AngelList Emerald */
+            --plum: #523542; /* Primary Branding */
+            --rose: #D0A0B7; /* Rose Accent */
+            --text-main: #0f172a;
             --text-secondary: #64748b;
             --glass-bg: rgba(255, 255, 255, 0.75);
             --glass-border: rgba(82, 53, 66, 0.1);
-            --shadow-soft: 0 4px 6px -1px rgba(82, 53, 66, 0.05);
-            --shadow-thick: 0 20px 25px -5px rgba(82, 53, 66, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background: radial-gradient(at 0% 0%, rgba(208, 160, 183, 0.1) 0px, transparent 50%),
-                        radial-gradient(at 100% 0%, rgba(106, 82, 93, 0.08) 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, rgba(82, 53, 66, 0.05) 0px, transparent 50%),
-                        radial-gradient(at 0% 100%, rgba(208, 160, 183, 0.1) 0px, transparent 50%);
-            background-attachment: fixed;
-        }
-
-        /* Animated Background Grid */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(82, 53, 66, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(106, 82, 93, 0.05) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none;
-            z-index: 0;
-            animation: gridMove 30s linear infinite alternate;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0) skew(0deg); }
-            100% { transform: translate(40px, 40px) skew(2deg); }
-        }
-
-        /* Glowing Orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .orb-1 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
-            animation: float 25s ease-in-out infinite;
-            filter: blur(100px);
-        }
-
-        .orb-2 {
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
-            bottom: -200px;
-            left: -200px;
-            animation: float 30s ease-in-out infinite reverse;
-            filter: blur(100px);
-        }
-
-        .orb-3 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
-            top: 40%;
-            left: 30%;
-            animation: pulse 20s ease-in-out infinite;
-            filter: blur(100px);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(100px, -100px) scale(1.1); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
-            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.08; }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        nav {
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
-            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo svg {
-            transition: filter 0.3s ease;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-btn {
-            background: var(--accent-primary);
-            color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: transform 0.2s ease;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--text-main); overflow-x: hidden; scroll-behavior: smooth; }
         
-        .nav-btn:hover {
-            transform: scale(1.05);
-        }
+        /* Navbar (Vercel Style) */
+        nav { position: fixed; top: 0; left: 0; right: 0; height: 90px; display: flex; align-items: center; z-index: 1000; background: #ffffff; border-bottom: 1px solid var(--glass-border); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .nav-logo { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--plum); text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .nav-logo img { height: 36px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--plum); font-weight: 600; font-size: 15px; opacity: 0.75; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+        .nav-cta { background: var(--plum); color: #fff; padding: 12px 28px; border-radius: 100px; font-weight: 600; text-decoration: none; font-size: 15px; transition: transform 0.3s; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(82, 53, 66, 0.15); }
 
-        /* Cosmos Style Hero Section */
-        .cosmos-hero {
+        /* Section 1: AngelList Emerald Hero (PERFECT RECONSTRUCTION) */
+        .nv-hero {
             position: relative;
-            padding: 160px 0 200px;
+            padding: 140px 0 60px;
+            background: var(--emerald);
+            min-height: auto;
             text-align: center;
-            /* Remove overflow: hidden to prevent character clipping */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
+            color: #ffffff;
+            overflow: hidden;
         }
 
-        .cosmos-hero-content {
-            position: relative;
+        .nv-hero-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
             z-index: 10;
         }
 
-        .cosmos-hero h1 {
+        .nv-hero h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(1.4rem, 6vw, 3.4rem);
+            font-size: clamp(2rem, 5vw, 3.8rem);
             font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 15px;
-            letter-spacing: 0.01em;
-            color: #000;
-            padding: 0 10% 5px;
-            filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
-            overflow: visible !important;
-            display: block;
+            line-height: 1.1;
+            margin: 0 0 20px;
+            letter-spacing: -2px;
         }
 
-        .cosmos-subtitle {
-            font-size: 22px;
-            color: var(--text-secondary);
+        .nv-hero-subtitle {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.7);
             max-width: 650px;
-            margin: 0 auto 50px;
-            line-height: 1.5;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 18px 40px;
-            font-family: 'Syne', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background: var(--accent-primary);
-            color: #fff;
-            box-shadow: 0 10px 20px -5px rgba(82, 53, 66, 0.4);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px -5px rgba(82, 53, 66, 0.5);
-            background: var(--accent-purple);
-        }
-
-        .btn-secondary {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-        
-        .btn-secondary:hover {
-            background: #fff;
-            box-shadow: var(--shadow-soft);
-        }
-
-        /* Floating Atmosphere Cards */
-        .atm-card {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            animation: drift ease-in-out infinite alternate;
-        }
-        
-        .atm-card img, .atm-card svg {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        
-        @keyframes drift {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-30px) rotate(5deg); }
-        }
-
-
-        .btn-primary {
-            background: var(--gradient-main);
-            color: var(--bg-dark);
-            box-shadow: 0 10px 40px rgba(0, 255, 159, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(0, 255, 159, 0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 56px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 80px;
-            letter-spacing: -2px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-main);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 159, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 255, 159, 0.2);
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-main);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 28px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Code Example Section */
-        .code-section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .code-container {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 255, 159, 0.2);
-            border-radius: 20px;
-            padding: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .code-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot:nth-child(1) { background: #ff5f57; }
-        .code-dot:nth-child(2) { background: #ffbd2e; }
-        .code-dot:nth-child(3) { background: #28ca42; }
-
-        .code-block {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .code-comment {
-            color: #666;
-        }
-
-        .code-keyword {
-            color: var(--accent-purple);
-        }
-
-        .code-function {
-            color: var(--accent-secondary);
-        }
-
-        .code-type {
-            color: var(--accent-primary);
-        }
-
-        /* Ecosystem Projects Section */
-        .ecosystem-projects {
-            padding: 120px 0 150px;
-            position: relative;
-            min-height: 800px;
-        }
-
-        .ecosystem-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .sellix-title {
-                font-size: 40px;
-            }
-
-            .timeline-item {
-                gap: 30px;
-            }
-
-            .timeline-icon {
-                left: 0;
-                position: relative;
-                transform: none;
-                margin-top: 10px;
-            }
-
-            .timeline-content {
-                padding-left: 0;
-            }
-
-            .vertical-grid-lines {
-                display: none;
-            }
-        }
-
-        /* Scroll Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ElevenLabs / Squarespace Inspired Ecosystem */
-        .ecosystem-modern {
-            padding: 80px 0 120px;
-            position: relative;
-            background: var(--bg-dark);
-            z-index: 2;
-        }
-
-        .main-logo-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .main-logo-wrapper svg {
-            height: 60px; /* Short, not big */
-            width: auto;
-            max-width: 100%;
-        }
-
-        /* Modern Stats Grid */
-        .modern-stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 120px;
-            margin-bottom: 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 80px;
-        }
-
-        .modern-stat {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease forwards;
-        }
-
-        .modern-stat:nth-child(2) { animation-delay: 0.2s; }
-        .modern-stat:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modern-stat h4 {
-            font-size: 64px;
-            font-weight: 400;
-            letter-spacing: -2px;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-family: 'Syne', sans-serif;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .modern-stat p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
             font-weight: 500;
         }
 
-        /* Infinite Marquee */
-        .trusted-label {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
+        /* 10-Logo Marquee (RESTORED) */
+        .nv-marquee-section { width: 100%; padding: 40px 0 80px; overflow: hidden; background: var(--emerald); }
+        .nv-marquee-track { display: flex; gap: 80px; width: max-content; animation: nvMarqueeMove 45s linear infinite; align-items: center; }
+        .nv-project-logo { height: 28px; opacity: 0.8; filter: brightness(0) invert(1); transition: opacity 0.3s; }
+        .nv-project-logo:hover { opacity: 1; }
+
+        @keyframes nvMarqueeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 40px)); }
         }
 
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            padding: 20px 0;
-        }
+        /* Section 2: Ecosystem Section (Restored High-Fidelity Cards) */
+        .ecosystem-section { padding: 120px 0; background: #f8fafc; position: relative; z-index: 5; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; color: var(--plum); letter-spacing: -2px; margin-bottom: 16px; }
+        .section-header p { color: var(--text-secondary); font-size: 18px; max-width: 600px; margin: 0 auto; }
 
-        .marquee-container::before,
-        .marquee-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .marquee-container::before {
-            left: 0;
-            background: linear-gradient(to right, var(--bg-dark), transparent);
-        }
-
-        .marquee-container::after {
-            right: 0;
-            background: linear-gradient(to left, var(--bg-dark), transparent);
-        }
-
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: scroll-left 40s linear infinite;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .marquee-pill {
-            padding: 12px 30px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 100px;
-            font-family: 'Syne', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.6);
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .marquee-pill:hover {
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            border-color: rgba(255,255,255,0.2);
-            transform: scale(1.05);
-        }
-
-        .marquee-pill span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #444;
-            transition: all 0.4s ease;
-        }
-
-        .marquee-pill:hover span {
-            background: var(--accent-primary);
-            box-shadow: 0 0 12px var(--accent-primary);
-        }
-
-        @keyframes scroll-left {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); } 
-        }
-
-        @media (max-width: 768px) {
-            .modern-stats-grid {
-                flex-direction: column;
-                gap: 50px;
-                padding-bottom: 50px;
-            }
-            .marquee-container::before,
-            .marquee-container::after {
-                width: 100px;
-            }
-        }
-
-        /* Maze Style Ecosystem List */
-        .ecosystem-list-section {
-            padding: 100px 0 150px;
-            background: #ffffff;
-            position: relative;
-            z-index: 5;
-        }
-        
-        .ecosystem-list {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
+        .eco-list { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; padding: 0 24px; }
         
         .eco-list-item {
             display: flex;
@@ -709,12 +98,14 @@
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 6px -1px rgba(82, 53, 66, 0.05);
+            text-decoration: none;
+            color: inherit;
         }
         
         .eco-list-item:hover {
             transform: translateY(-8px) scale(1.01);
-            box-shadow: var(--shadow-thick);
+            box-shadow: 0 20px 25px -5px rgba(82, 53, 66, 0.1);
             background: #ffffff;
             border-color: rgba(59, 130, 246, 0.2);
         }
@@ -735,31 +126,17 @@
             max-width: 100%;
             max-height: 100%;
             border-radius: 8px;
+            object-fit: contain;
         }
         
-        .eco-content {
-            flex-grow: 1;
-        }
-        
-        .eco-content h3 {
-            font-size: 28px;
-            font-family: 'Syne', sans-serif;
-            color: var(--accent-primary);
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-        
-        .eco-content p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
+        .eco-content { flex-grow: 1; }
+        .eco-content h3 { font-size: 28px; font-family: 'Syne', sans-serif; color: var(--plum); margin-bottom: 15px; letter-spacing: -1px; font-weight: 800; }
+        .eco-content p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 25px; }
         
         .eco-link {
             font-size: 14px;
             font-weight: 700;
-            color: var(--accent-primary);
+            color: var(--plum);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -767,95 +144,85 @@
             transition: gap 0.2s ease;
         }
         
-        .eco-link:hover {
-            gap: 12px;
-        }
-        
+        .eco-link:hover { gap: 12px; text-decoration: underline; }
+
+        /* Footer Restoration */
+        footer { padding: 100px 0; background: #ffffff; border-top: 1px solid var(--glass-border); }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .footer-logo { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--plum); margin-bottom: 24px; }
+        .footer-links h4 { color: var(--plum); opacity: 0.6; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; margin-bottom: 24px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 16px; }
+        .footer-links a { color: var(--plum); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--rose); }
+
         @media (max-width: 768px) {
-            .eco-list-item {
-                flex-direction: column;
-                gap: 20px;
-                padding: 30px;
-            }
+            .nav-links { display: none; }
+            .eco-list-item { flex-direction: column; text-align: center; padding: 40px 24px; }
+            .eco-logo-box { margin: 0 auto; }
+            .footer-grid { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+            .section-header h2 { font-size: 36px; }
         }
-
-        /* Rox.com Inspired Sections */
-        .rox-dark-section { background-color: #000000; color: #ffffff; font-family: 'JetBrains Mono', monospace; position: relative; z-index: 2; padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .rox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 80px; }
-        .rox-card { background: #050505; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 48px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start; }
-        .rox-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(800px circle at top left, rgba(255,255,255,0.03), transparent); pointer-events: none; }
-        .rox-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
-        .rox-card-icon { font-size: 32px; margin-bottom: 24px; display: inline-block; background: rgba(255,255,255,0.05); width: 60px; height: 60px; border-radius: 50%; text-align: center; line-height: 60px; }
-        .rox-card h3 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 600; margin-bottom: 20px; letter-spacing: -1px; color: #ffffff; }
-        .rox-card p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; margin-bottom: 30px; }
-        .rox-header { text-align: center; margin-bottom: 80px; }
-        .rox-pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 100px; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; color: rgba(255,255,255,0.8); }
-        .rox-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-secondary); box-shadow: 0 0 10px var(--accent-secondary); }
-        .rox-header h2 { font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 600; line-height: 1.1; letter-spacing: -2px; }
-        .rox-backers { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .backers-grid-rox { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; align-items: center; margin-top: 60px; }
-        .backer-item { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: -1px; transition: all 0.3s ease; cursor: default; }
-        .backer-item:hover { color: #ffffff; transform: scale(1.05); }
-        .rox-footer { background: #000000; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid-rox { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
-        .footer-brand-rox { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 20px; }
-        .footer-col h4 { font-family: 'Syne', sans-serif; color: #ffffff; margin-bottom: 24px; font-size: 16px; }
-        .footer-col ul { list-style: none; padding: 0; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s ease; }
-        .footer-col ul li a:hover { color: #ffffff; }
-        .rox-copyright { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 13px; }
-        @media (max-width: 768px) { .rox-grid { grid-template-columns: 1fr; } .footer-grid-rox { grid-template-columns: 1fr; gap: 60px; } .rox-header h2 { font-size: 40px; } }
-
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
-        <div class="container">
-                <div class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="90 100 1300 400" fill="none" style="filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.2));">
-                        <g filter="url(#a-nav)">
-                            <g clip-path="url(#b-nav)">
-                                <mask id="c-nav" width="296" height="424" x="-3" y="1" maskUnits="userSpaceOnUse" style="mask-type:luminance">
-                                    <path fill="#fff" d="M292.481 1H-3v423.257h295.481V1Z"/>
-                                </mask>
-                                <g fill="#523542" mask="url(#c-nav)">
-                                    <path d="m291.561 280.713-.011-.016h.007l.004.016Zm-6.193-17.446-41.794-50.125 11.81-131.773 29.984 181.898Z" opacity=".7"/>
-                                    <path d="M250.095 52.805 236.541 204.07 138.215 75.63l4.452-70.716 107.428 47.891Z" opacity=".8"/>
-                                    <path d="M130.408 75.424 25.488 214.868 134.131 16.342l-3.723 59.082Z"/>
-                                    <path d="M234.82 214.56 99.217 414.894.937 260.619 134.345 83.314 234.82 214.56Z" opacity=".95"/>
-                                    <path d="M230.635 425.213H103.566L240.41 219.948l44.963 54.738-54.738 150.527Z" opacity=".9"/>
-                                </g>
-                                <path fill="#111827" d="M522.496 193.87c-1.529-15.724-7.319-27.518-17.363-35.381-10.049-8.08-22.388-12.121-37.019-12.121-5.024 0-10.376.655-16.053 1.966-5.458 1.092-10.592 2.948-15.397 5.569-4.586 2.621-8.41 6.006-11.468 10.156-3.057 4.149-4.586 9.173-4.586 15.07 0 5.46 1.095 10.155 3.277 14.086 2.185 3.932 5.243 7.426 9.172 10.484 3.933 2.839 8.41 5.241 13.434 7.207 5.239 1.965 10.811 3.712 16.707 5.241l23.912 6.225a314.768 314.768 0 0 1 27.85 8.517c9.391 3.276 17.688 7.426 24.897 12.449 7.206 5.023 12.993 11.248 17.36 18.674 4.586 7.425 6.881 16.488 6.881 27.19 0 10.92-2.51 20.53-7.534 28.829-5.024 8.081-11.686 14.851-19.983 20.311-8.082 5.46-17.473 9.5-28.174 12.122-10.482 2.62-21.187 3.931-32.107 3.931-26.427 0-48.158-6.553-65.193-19.656-16.816-13.104-27.08-31.669-30.793-55.692h37.346c.657 7.425 2.186 14.523 4.586 21.294 2.624 6.77 6.334 12.776 11.139 18.018 4.806 5.241 10.811 9.5 18.017 12.776 7.21 3.058 15.835 4.586 25.883 4.586 5.896 0 11.901-.655 18.016-1.965 6.334-1.529 12.011-3.822 17.035-6.88 5.243-3.276 9.501-7.316 12.778-12.121 3.276-5.023 4.914-11.138 4.914-18.346 0-6.333-1.419-11.684-4.258-16.052-2.842-4.368-6.662-8.081-11.467-11.139-4.805-3.276-10.373-5.896-16.707-7.862-6.334-2.184-12.996-4.15-19.983-5.897l-27.521-7.207a177.25 177.25 0 0 1-23.588-8.19c-7.644-3.494-14.411-7.753-20.307-12.776-5.9-5.242-10.596-11.248-14.087-18.018-3.497-6.989-5.244-15.07-5.244-24.243 0-10.046 2.403-18.673 7.206-25.88 4.805-7.207 11.139-13.104 19.002-17.691 8.082-4.804 17.144-8.299 27.193-10.483 10.263-2.184 20.745-3.276 31.446-3.276 12.234 0 23.369 1.747 33.418 5.242 10.044 3.494 18.782 8.299 26.207 14.414 7.425 5.897 13.43 12.886 18.016 20.967 4.806 8.08 7.973 16.598 9.501 25.552h-36.361Zm134.263 142.834c10.044 0 18.454-3.167 25.222-9.5 6.991-6.552 11.03-15.616 12.125-27.191h34.07c-1.748 9.391-4.915 17.472-9.501 24.242a63.247 63.247 0 0 1-17.035 17.036c-6.553 4.367-13.868 7.643-21.95 9.828-8.082 2.184-16.492 3.276-25.226 3.276-11.577 0-22.278-1.966-32.104-5.897-9.61-3.932-17.91-9.501-24.897-16.708-6.991-7.207-12.449-15.943-16.382-26.208-3.93-10.265-5.896-21.84-5.896-34.725 0-12.012 1.747-23.042 5.243-33.088 3.71-10.265 8.953-19.11 15.725-26.536 6.768-7.425 14.959-13.213 24.569-17.363 9.826-4.368 20.855-6.552 33.085-6.552 10.705 0 20.64 1.748 29.812 5.242 9.392 3.276 17.473 8.408 24.245 15.397 6.768 6.989 12.011 15.834 15.725 26.536 3.711 10.702 5.459 23.369 5.24 38.002H611.874c.219 19.656 4.153 35.271 11.796 46.847 7.644 11.575 18.674 17.362 33.089 17.362Zm-3.276-132.351c-5.681 0-11.03.983-16.054 2.949-4.805 1.747-9.063 4.696-12.777 8.845-3.711 3.931-6.768 9.064-9.173 15.398-2.181 6.333-3.386 13.977-3.605 22.932h79.936c.219-9.173-.656-16.926-2.619-23.26-1.748-6.334-4.367-11.466-7.863-15.397-3.495-3.932-7.643-6.771-12.449-8.518-4.805-1.966-9.938-2.949-15.396-2.949Zm104.141-77.313h35.056v40.295h-35.056V127.04Zm35.056 102.866v97.953c0 3.931.543 6.552 1.638 7.862 1.31 1.092 3.929 1.857 7.859 2.294l12.777 1.31v11.139h-79.608v-11.139l12.778-1.31c3.933-.437 6.443-1.202 7.534-2.294 1.313-1.31 1.966-3.931 1.966-7.862V212.216c0-3.713-.547-6.115-1.638-7.207-1.091-1.31-3.71-2.184-7.862-2.621l-12.778-1.31v-11.139h57.658l-.324 39.967Zm56.845 70.107c1.09 10.265 4.805 19.001 11.139 26.208 6.552 6.989 16.268 10.483 29.155 10.483 11.577 0 20.531-2.184 26.864-6.552 6.334-4.586 9.501-10.701 9.501-18.345 0-4.587-1.204-8.409-3.605-11.466-2.185-3.276-5.133-6.006-8.844-8.19-3.495-2.184-7.534-3.932-12.124-5.242a147.299 147.299 0 0 0-14.083-3.276l-18.673-3.603c-5.9-1.093-11.796-2.731-17.692-4.915-5.677-2.402-10.811-5.46-15.397-9.173-4.586-3.931-8.301-8.517-11.139-13.759-2.839-5.46-4.258-11.903-4.258-19.328 0-8.081 1.857-14.961 5.568-20.639 3.933-5.897 8.844-10.592 14.744-14.087 6.115-3.713 12.992-6.443 20.636-8.19 7.862-1.747 15.725-2.621 23.587-2.621 17.035 0 31.779 4.15 44.228 12.449 12.668 8.081 20.531 20.093 23.588 36.036h-32.76c-.219-4.368-1.419-8.408-3.605-12.121-1.967-3.931-4.586-7.207-7.863-9.828-3.276-2.839-7.205-5.023-11.792-6.552-4.371-1.529-9.172-2.293-14.415-2.293-3.058 0-6.553.327-10.482.983a37.8 37.8 0 0 0-10.811 2.948c-3.495 1.529-6.443 3.713-8.848 6.552-2.401 2.621-3.601 6.006-3.601 10.156 0 7.207 2.729 12.885 8.187 17.035 5.462 3.931 13.216 6.88 23.26 8.845l18.673 3.604c7.429 1.529 14.525 3.385 21.297 5.569 6.987 2.184 13.102 5.241 18.345 9.173 5.243 3.713 9.391 8.408 12.449 14.086 3.057 5.679 4.586 12.668 4.586 20.967 0 8.954-1.857 16.599-5.568 22.932-3.714 6.334-8.738 11.466-15.072 15.397-6.334 3.932-13.649 6.771-21.95 8.518-8.296 1.747-17.035 2.621-26.207 2.621-9.392 0-18.236-1.202-26.536-3.604-8.082-2.402-15.288-5.897-21.622-10.483-6.114-4.587-11.139-10.265-15.068-17.036-3.714-6.77-5.896-14.523-6.553-23.259h32.761Zm168.725-83.211h.33c4.59-8.735 10.7-15.834 18.35-21.294 7.86-5.46 17.69-8.19 29.48-8.19 12.89 0 22.61 3.167 29.16 9.501 6.77 6.115 11.46 13.432 14.09 21.949 4.36-9.391 10.81-16.926 19.32-22.604 8.74-5.897 19.11-8.846 31.12-8.846 9.61 0 17.37 1.748 23.26 5.242 6.12 3.276 10.81 7.644 14.09 13.104 3.28 5.46 5.46 11.685 6.55 18.673 1.09 6.771 1.64 13.65 1.64 20.639v82.883c0 3.931.55 6.552 1.64 7.862 1.31 1.092 3.93 1.857 7.86 2.294l12.78 1.31v11.139h-79.61v-11.139l12.78-1.31c3.93-.437 6.44-1.202 7.53-2.294 1.31-1.31 1.97-3.931 1.97-7.862V256.77c0-17.254-1.86-29.484-5.57-36.692-3.72-7.425-10.37-11.138-19.98-11.138-11.36 0-19.66 4.259-24.9 12.777-5.24 8.517-7.86 19.328-7.86 32.432v73.71c0 3.931.54 6.552 1.63 7.862 1.31 1.092 3.93 1.857 7.87 2.294l12.77 1.31v11.139h-79.6v-11.139l12.77-1.31c3.93-.437 6.44-1.202 7.54-2.294 1.31-1.31 1.96-3.931 1.96-7.862V256.77c0-17.254-1.96-29.484-5.9-36.692-3.71-7.425-10.37-11.138-19.98-11.138-11.14 0-19.43 4.259-24.9 12.777-5.24 8.517-7.86 19.328-7.86 32.432v73.71c0 3.931.55 6.552 1.64 7.862 1.31 1.092 3.93 1.857 7.86 2.294l12.78 1.31v11.139h-79.609v-11.139l12.778-1.31c3.929-.437 6.443-1.202 7.534-2.294 1.31-1.31 1.966-3.931 1.966-7.862V212.216c0-3.713-.547-6.115-1.638-7.207-1.094-1.31-3.714-2.184-7.862-2.621l-12.778-1.31v-11.139h56.999v26.863Zm231.63-89.762h35.06v40.295h-35.06V127.04Zm35.06 102.866v97.953c0 3.931.54 6.552 1.64 7.862 1.3 1.092 3.92 1.857 7.86 2.294l12.77 1.31v11.139h-79.6v-11.139l12.77-1.31c3.93-.437 6.44-1.202 7.54-2.294 1.31-1.31 1.96-3.931 1.96-7.862V212.216c0-3.713-.54-6.115-1.64-7.207-1.09-1.31-3.71-2.184-7.86-2.621l-12.77-1.31v-11.139h57.66l-.33 39.967Zm24.41 40.951c0-12.668 1.86-24.134 5.57-34.398 3.93-10.484 9.39-19.329 16.38-26.536 6.99-7.207 15.29-12.776 24.9-16.708 9.61-3.931 20.2-5.897 31.77-5.897 8.3 0 16.38 1.092 24.25 3.276 8.08 1.966 15.39 5.242 21.95 9.829 6.55 4.368 12.12 10.046 16.7 17.035 4.59 6.988 7.76 15.288 9.5 24.897h-34.07c-.21-6.988-1.52-12.885-3.93-17.69-2.4-4.805-5.46-8.627-9.17-11.466-3.5-3.058-7.32-5.132-11.47-6.224-4.15-1.311-8.19-1.966-12.12-1.966-13.98 0-24.57 6.006-31.77 18.018-7 11.793-10.49 27.737-10.49 47.83 0 20.092 3.49 36.145 10.49 48.157 6.98 11.793 17.68 17.69 32.1 17.69 3.93 0 7.97-.546 12.12-1.638 4.15-1.31 7.97-3.385 11.47-6.224 3.49-3.058 6.44-6.989 8.84-11.794 2.41-4.805 3.72-10.702 3.93-17.69h34.07c-1.74 9.609-4.91 17.909-9.5 24.897-4.58 6.989-10.15 12.777-16.7 17.363-6.56 4.368-13.87 7.535-21.95 9.501-7.87 2.184-15.95 3.276-24.25 3.276-11.57 0-22.16-1.966-31.77-5.897-9.61-3.932-17.91-9.501-24.9-16.708-6.99-7.207-12.45-15.943-16.38-26.208-3.71-10.265-5.57-21.84-5.57-34.725Z" fill="currentColor"/>
-                        </svg>
-                    </svg>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#ecosystem">Ecosystem</a></li>
-                    <li><a href="https://docs.seismic.systems" target="_blank">Docs</a></li>
-                    <li><a href="#" class="nav-btn">Start Building</a></li>
-                </ul>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="https://framerusercontent.com/images/RNHqhN9OPcfhYMA27iXglrnSM.svg" alt="Seismic">
+            </a>
+            <div class="nav-links">
+                <a href="#ecosystem">Ecosystem</a>
+                <a href="https://docs.seismic.systems/" target="_blank">Docs</a>
             </div>
+            <a href="#ecosystem" class="nav-cta">Start Building</a>
         </div>
     </nav>
 
-    <!-- Main Cosmos Hero Section -->
-    <section class="cosmos-hero" id="home">
-        <div class="cosmos-hero-content scroll-reveal">
-            <h1>THE PRIVACY LAYER<br>Bridging Web2 and Web3</h1>
-            <p class="cosmos-subtitle">Secure infrastructure, private multi-currency accounts, and robust yield instruments for a new global financial system.</p>
-            <div class="cta-buttons">
-                <a href="#ecosystem" class="btn btn-primary">Start Building</a>
-                <a href="#" class="btn btn-secondary">Explore Ecosystem</a>
+    <!-- Section 1: AngelList Emerald Hero -->
+    <section class="nv-hero">
+        <div class="nv-hero-content">
+            <h1>Projects Building on Seismic</h1>
+            <p class="nv-hero-subtitle">
+                Explore apps and teams shaping the future of encrypted blockchain infrastructure.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#ecosystem" style="background:#fff; color:var(--emerald); padding: 14px 40px; border-radius: 12px; font-weight: 700; text-decoration: none;">Get Started</a>
+                <a href="https://docs.seismic.systems/" target="_blank" style="background:rgba(255,255,255,0.1); color:#fff; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 14px 40px; border-radius: 12px; font-weight: 700; text-decoration: none;">Read Docs</a>
             </div>
         </div>
     </section>
 
-    <!-- Ecosystem List Section (Maze.co Inspired) -->
-    <section class="ecosystem-list-section" id="ecosystem">
-        <div class="ecosystem-list scroll-reveal">
-            
+    <!-- 10-Logo Marquee Section -->
+    <div class="nv-marquee-section">
+        <div class="nv-marquee-track">
+            <img src="https://framerusercontent.com/images/UgeAlOHZZ3FQwYhs7gAADiyTsio.svg" alt="Specie" class="nv-project-logo">
+            <img src="promis.jpg" alt="Promis" class="nv-project-logo">
+            <svg viewBox="0 0 33.402 21" style="height: 28px; opacity: 0.8; filter: brightness(0) invert(1);" class="nv-project-logo"><path d="M 3.824 21 L 15.974 21 L 15.974 17.293 L 5.947 17.305 C 5.11 17.306 4.689 16.314 5.279 15.731 L 15.987 5.154 L 15.987 0 L 1.12 14.593 C 0.403 15.297 0 16.251 0 17.247 C 0 19.32 1.712 21 3.824 21 Z M 29.579 0 L 17.428 0 L 17.428 3.707 L 27.455 3.695 C 28.292 3.694 28.713 4.686 28.123 5.269 L 17.415 15.846 L 17.415 21 L 32.282 6.407 C 32.999 5.703 33.402 4.748 33.402 3.753 C 33.402 1.68 31.69 0 29.579 0 Z" fill="#ffffff"></path></svg>
+            <img src="https://framerusercontent.com/images/kztSbCmi83eGOrsXWs2bnEqc.png" alt="Via" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/le7rHwmt4MoWogPPDnWwvEQo1sA.png" alt="DashX" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/6dEUV8Z7tT2kLNhhKbDtl2onys.png" alt="Vend" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/oJ7QVYoyXBbQ4HvAmIeq5U7AGpo.png" alt="Blend" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/jXvSeWV4wo0VFBKxnbf1nl2lw.png" alt="Brookwell" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/ly6CYDZguctn369Fter3suQOhA.png" alt="Cred" class="nv-project-logo">
+            <img src="https://framerusercontent.com/images/H4Yn2rDLeq2wENXWMdowmAbKZs.png" alt="Shift" class="nv-project-logo">
+            <!-- Loop -->
+            <img src="https://framerusercontent.com/images/UgeAlOHZZ3FQwYhs7gAADiyTsio.svg" alt="Specie" class="nv-project-logo">
+            <img src="promis.jpg" alt="Promis" class="nv-project-logo">
+            <svg viewBox="0 0 33.402 21" style="height: 28px; opacity: 0.8; filter: brightness(0) invert(1);" class="nv-project-logo"><path d="M 3.824 21 L 15.974 21 L 15.974 17.293 L 5.947 17.305 C 5.11 17.306 4.689 16.314 5.279 15.731 L 15.987 5.154 L 15.987 0 L 1.12 14.593 C 0.403 15.297 0 16.251 0 17.247 C 0 19.32 1.712 21 3.824 21 Z M 29.579 0 L 17.428 0 L 17.428 3.707 L 27.455 3.695 C 28.292 3.694 28.713 4.686 28.123 5.269 L 17.415 15.846 L 17.415 21 L 32.282 6.407 C 32.999 5.703 33.402 4.748 33.402 3.753 C 33.402 1.68 31.69 0 29.579 0 Z" fill="#ffffff"></path></svg>
+        </div>
+    </div>
+
+    <!-- Section 2: Ecosystem Section (Full 11-Project Restoration) -->
+    <section class="ecosystem-section" id="ecosystem">
+        <div class="section-header">
+            <h2>Ecosystem Partners</h2>
+            <p>Building the foundation for private, scalable financial services.</p>
+        </div>
+        
+        <div class="eco-list">
+
+
             <!-- Blend -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
@@ -880,7 +247,7 @@
                 <div class="eco-content">
                     <h3>Vend</h3>
                     <p>Infrastructure for autonomous commerce. Self-financing machines powered by revenue-based credit.</p>
-                    <a href="https://vend.money/" target="_blank" class="eco-link">Vend Platform —></a>
+                    <a href="https://vend.money/" target="_blank" class="eco-link">Visit Vend —></a>
                 </div>
             </div>
 
@@ -899,7 +266,7 @@
             <!-- Cred Protocol -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
-                    <svg width="40" height="40" viewBox="0 0 250 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="60" height="60" viewBox="0 0 250 330" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M125 0L250 165L125 330L0 165L125 0ZM125 100L175 165L125 230L75 165L125 100Z" fill="#5876FF"/>
                     </svg>
                 </div>
@@ -939,7 +306,7 @@
             <!-- Shift -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
-                    <img src="shift.jpg" alt="Shift" style="border-radius: 6px;">
+                    <img src="https://framerusercontent.com/images/H4Yn2rDLeq2wENXWMdowmAbKZs.png" alt="Shift">
                 </div>
                 <div class="eco-content">
                     <h3>Shift</h3>
@@ -951,19 +318,17 @@
             <!-- DashX -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
-                    <img src="dashx.svg" alt="DashX" style="border-radius: 6px;">
+                    <img src="https://framerusercontent.com/images/le7rHwmt4MoWogPPDnWwvEQo1sA.png" alt="DashX">
                 </div>
                 <div class="eco-content">
                     <h3>DashX</h3>
                     <p>Cross-border payments powered by crypto. Accept USDC, track transactions, and withdraw INR globally through one unified stack.</p>
                     <a href="https://dashx.xyz/" target="_blank" class="eco-link">Use DashX —></a>
                 </div>
-            </div>
-
-            <!-- Promis -->
+              <!-- Promis -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
-                    <img src="promis.jpg" alt="Promis" style="border-radius: 6px;">
+                    <img src="promis.jpg" alt="Promis">
                 </div>
                 <div class="eco-content">
                     <h3>Promis</h3>
@@ -972,122 +337,44 @@
                 </div>
             </div>
 
-            <!-- New Moats -->
+            <!-- PORT Project -->
             <div class="eco-list-item">
                 <div class="eco-logo-box">
-                    <div style="font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -1px; text-transform: uppercase;">Moat</div>
+                    <svg viewBox="0 0 33.402 21" height="50"><path d="M 3.824 21 L 15.974 21 L 15.974 17.293 L 5.947 17.305 C 5.11 17.306 4.689 16.314 5.279 15.731 L 15.987 5.154 L 15.987 0 L 1.12 14.593 C 0.403 15.297 0 16.251 0 17.247 C 0 19.32 1.712 21 3.824 21 Z M 29.579 0 L 17.428 0 L 17.428 3.707 L 27.455 3.695 C 28.292 3.694 28.713 4.686 28.123 5.269 L 17.415 15.846 L 17.415 21 L 32.282 6.407 C 32.999 5.703 33.402 4.748 33.402 3.753 C 33.402 1.68 31.69 0 29.579 0 Z" fill="#523542"></path></svg>
                 </div>
                 <div class="eco-content">
-                    <h3>New Market Moats</h3>
-                    <p>Privacy completely unblocks entry into finance, healthcare, identity, and supply chain solutions. A winner-take-most privacy moat creates massive long-term stickiness.</p>
-                    <a href="#" class="eco-link">Learn More —></a>
+                    <h3>PORT</h3>
+                    <p>Reimagining global trade finance for buyers and suppliers around the world. Secure, transparent, and private.</p>
+                    <a href="https://portmarkets.com/" target="_blank" class="eco-link">Visit PORT —></a>
                 </div>
-            </div>
-            
-        </div>
-    </section>
-
-
-    <!-- Backers Section (Rox Inspired) -->
-    <section class="rox-dark-section rox-backers">
-        <div class="container">
-            <div class="rox-header scroll-reveal" style="margin-bottom: 40px;">
-                <h2 style="font-size: 32px;">Backed By The Best</h2>
-            </div>
-            <div class="backers-grid-rox scroll-reveal">
-                <span class="backer-item">a16z crypto</span>
-                <span class="backer-item">Polychain</span>
-                <span class="backer-item">Galaxy Digital</span>
-                <span class="backer-item">IOSG VC</span>
-                <span class="backer-item">Electric Capital</span>
-                <span class="backer-item">Multicoin</span>
-                <span class="backer-item">Alliance</span>
-                <span class="backer-item">1kx</span>
             </div>
         </div>
     </section>
 
-    <!-- Clean Footer (Rox Inspired) -->
-    <footer class="rox-footer">
-        <div class="container">
-            <div class="footer-grid-rox scroll-reveal">
-                <div class="footer-col" style="padding-right: 40px;">
-                    <div class="footer-brand-rox">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="46" viewBox="90 100 1300 400" fill="none">
-                            <mask id="c-footer" width="296" height="424" x="-3" y="1" maskUnits="userSpaceOnUse" style="mask-type:luminance">
-                                <path fill="#fff" d="M292.481 1H-3v423.257h295.481V1Z"/>
-                            </mask>
-                            <g fill="#fff" mask="url(#c-footer)" opacity="0.9">
-                                <path d="m291.561 280.713-.011-.016h.007l.004.016Zm-6.193-17.446-41.794-50.125 11.81-131.773 29.984 181.898Z" opacity=".7"/>
-                                <path d="M250.095 52.805 236.541 204.07 138.215 75.63l4.452-70.716 107.428 47.891Z" opacity=".8"/>
-                                <path d="M130.408 75.424 25.488 214.868 134.131 16.342l-3.723 59.082Z"/>
-                                <path d="M234.82 214.56 99.217 414.894.937 260.619 134.345 83.314 234.82 214.56Z" opacity=".95"/>
-                                <path d="M230.635 425.213H103.566L240.41 219.948l44.963 54.738-54.738 150.527Z" opacity=".9"/>
-                            </g>
-                            <path fill="#fff" d="M522.496 193.87c-1.529-15.724-7.319-27.518-17.363-35.381-10.049-8.08-22.388-12.121-37.019-12.121-5.024 0-10.376.655-16.053 1.966-5.458 1.092-10.592 2.948-15.397 5.569-4.586 2.621-8.41 6.006-11.468 10.156-3.057 4.149-4.586 9.173-4.586 15.07 0 5.46 1.095 10.155 3.277 14.086 2.185 3.932 5.243 7.426 9.172 10.484 3.933 2.839 8.41 5.241 13.434 7.207 5.239 1.965 10.811 3.712 16.707 5.241l23.912 6.225a314.768 314.768 0 0 1 27.85 8.517c9.391 3.276 17.688 7.426 24.897 12.449 7.206 5.023 12.993 11.248 17.36 18.674 4.586 7.425 6.881 16.488 6.881 27.19 0 10.92-2.51 20.53-7.534 28.829-5.024 8.081-11.686 14.851-19.983 20.311-8.082 5.46-17.473 9.5-28.174 12.122-10.482 2.62-21.187 3.931-32.107 3.931-26.427 0-48.158-6.553-65.193-19.656-16.816-13.104-27.08-31.669-30.793-55.692h37.346c.657 7.425 2.186 14.523 4.586 21.294 2.624 6.77 6.334 12.776 11.139 18.018 4.806 5.241 10.811 9.5 18.017 12.776 7.21 3.058 15.835 4.586 25.883 4.586 5.896 0 11.901-.655 18.016-1.965 6.334-1.529 12.011-3.822 17.035-6.88 5.243-3.276 9.501-7.316 12.778-12.121 3.276-5.023 4.914-11.138 4.914-18.346 0-6.333-1.419-11.684-4.258-16.052-2.842-4.368-6.662-8.081-11.467-11.139-4.805-3.276-10.373-5.896-16.707-7.862-6.334-2.184-12.996-4.15-19.983-5.897l-27.521-7.207a177.25 177.25 0 0 1-23.588-8.19c-7.644-3.494-14.411-7.753-20.307-12.776-5.9-5.242-10.596-11.248-14.087-18.018-3.497-6.989-5.244-15.07-5.244-24.243 0-10.046 2.403-18.673 7.206-25.88 4.805-7.207 11.139-13.104 19.002-17.691 8.082-4.804 17.144-8.299 27.193-10.483 10.263-2.184 20.745-3.276 31.446-3.276 12.234 0 23.369 1.747 33.418 5.242 10.044 3.494 18.782 8.299 26.207 14.414 7.425 5.897 13.43 12.886 18.016 20.967 4.806 8.08 7.973 16.598 9.501 25.552h-36.361Zm134.263 142.834c10.044 0 18.454-3.167 25.222-9.5 6.991-6.552 11.03-15.616 12.125-27.191h34.07c-1.748 9.391-4.915 17.472-9.501 24.242a63.247 63.247 0 0 1-17.035 17.036c-6.553 4.367-13.868 7.643-21.95 9.828-8.082 2.184-16.492 3.276-25.226 3.276-11.577 0-22.278-1.966-32.104-5.897-9.61-3.932-17.91-9.501-24.897-16.708-6.991-7.207-12.449-15.943-16.382-26.208-3.93-10.265-5.896-21.84-5.896-34.725 0-12.012 1.747-23.042 5.243-33.088 3.71-10.265 8.953-19.11 15.725-26.536 6.768-7.425 14.959-13.213 24.569-17.363 9.826-4.368 20.855-6.552 33.085-6.552 10.705 0 20.64 1.748 29.812 5.242 9.392 3.276 17.473 8.408 24.245 15.397 6.768 6.989 12.011 15.834 15.725 26.536 3.711 10.702 5.459 23.369 5.24 38.002H611.874c.219 19.656 4.153 35.271 11.796 46.847 7.644 11.575 18.674 17.362 33.089 17.362Zm-3.276-132.351c-5.681 0-11.03.983-16.054 2.949-4.805 1.747-9.063 4.696-12.777 8.845-3.711 3.931-6.768 9.064-9.173 15.398-2.181 6.333-3.386 13.977-3.605 22.932h79.936c.219-9.173-.656-16.926-2.619-23.26-1.748-6.334-4.367-11.466-7.863-15.397-3.495-3.932-7.643-6.771-12.449-8.518-4.805-1.966-9.938-2.949-15.396-2.949Zm104.141-77.313h35.056v40.295h-35.056V127.04Zm35.056 102.866v97.953c0 3.931.543 6.552 1.638 7.862 1.31 1.092 3.929 1.857 7.859 2.294l12.777 1.31v11.139h-79.608v-11.139l12.778-1.31c3.933-.437 6.443-1.202 7.534-2.294 1.313-1.31 1.966-3.931 1.966-7.862V212.216c0-3.713-.547-6.115-1.638-7.207-1.091-1.31-3.71-2.184-7.862-2.621l-12.778-1.31v-11.139h57.658l-.324 39.967Zm56.845 70.107c1.09 10.265 4.805 19.001 11.139 26.208 6.552 6.989 16.268 10.483 29.155 10.483 11.577 0 20.531-2.184 26.864-6.552 6.334-4.586 9.501-10.701 9.501-18.345 0-4.587-1.204-8.409-3.605-11.466-2.185-3.276-5.133-6.006-8.844-8.19-3.495-2.184-7.534-3.932-12.124-5.242a147.299 147.299 0 0 0-14.083-3.276l-18.673-3.603c-5.9-1.093-11.796-2.731-17.692-4.915-5.677-2.402-10.811-5.46-15.397-9.173-4.586-3.931-8.301-8.517-11.139-13.759-2.839-5.46-4.258-11.903-4.258-19.328 0-8.081 1.857-14.961 5.568-20.639 3.933-5.897 8.844-10.592 14.744-14.087 6.115-3.713 12.992-6.443 20.636-8.19 7.862-1.747 15.725-2.621 23.587-2.621 17.035 0 31.779 4.15 44.228 12.449 12.668 8.081 20.531 20.093 23.588 36.036h-32.76c-.219-4.368-1.419-8.408-3.605-12.121-1.967-3.931-4.586-7.207-7.863-9.828-3.276-2.839-7.205-5.023-11.792-6.552-4.371-1.529-9.172-2.293-14.415-2.293-3.058 0-6.553.327-10.482.983a37.8 37.8 0 0 0-10.811 2.948c-3.495 1.529-6.443 3.713-8.848 6.552-2.401 2.621-3.601 6.006-3.601 10.156 0 7.207 2.729 12.885 8.187 17.035 5.462 3.931 13.216 6.88 23.26 8.845l18.673 3.604c7.429 1.529 14.525 3.385 21.297 5.569 6.987 2.184 13.102 5.241 18.345 9.173 5.243 3.713 9.391 8.408 12.449 14.086 3.057 5.679 4.586 12.668 4.586 20.967 0 8.954-1.857 16.599-5.568 22.932-3.714 6.334-8.738 11.466-15.072 15.397-6.334 3.932-13.649 6.771-21.95 8.518-8.296 1.747-17.035 2.621-26.207 2.621-9.392 0-18.236-1.202-26.536-3.604-8.082-2.402-15.288-5.897-21.622-10.483-6.114-4.587-11.139-10.265-15.068-17.036-3.714-6.77-5.896-14.523-6.553-23.259h32.761Zm168.725-83.211h.33c4.59-8.735 10.7-15.834 18.35-21.294 7.86-5.46 17.69-8.19 29.48-8.19 12.89 0 22.61 3.167 29.16 9.501 6.77 6.115 11.46 13.432 14.09 21.949 4.36-9.391 10.81-16.926 19.32-22.604 8.74-5.897 19.11-8.846 31.12-8.846 9.61 0 17.37 1.748 23.26 5.242 6.12 3.276 10.81 7.644 14.09 13.104 3.28 5.46 5.46 11.685 6.55 18.673 1.09 6.771 1.64 13.65 1.64 20.639v82.883c0 3.931.55 6.552 1.64 7.862 1.31 1.092 3.93 1.857 7.86 2.294l12.78 1.31v11.139h-79.61v-11.139l12.78-1.31c3.93-.437 6.44-1.202 7.53-2.294 1.31-1.31 1.97-3.931 1.97-7.862V256.77c0-17.254-1.86-29.484-5.57-36.692-3.72-7.425-10.37-11.138-19.98-11.138-11.36 0-19.66 4.259-24.9 12.777-5.24 8.517-7.86 19.328-7.86 32.432v73.71c0 3.931.54 6.552 1.63 7.862 1.31 1.092 3.93 1.857 7.87 2.294l12.77 1.31v11.139h-79.6v-11.139l12.77-1.31c3.93-.437 6.44-1.202 7.54-2.294 1.31-1.31 1.96-3.931 1.96-7.862V256.77c0-17.254-1.96-29.484-5.9-36.692-3.71-7.425-10.37-11.138-19.98-11.138-11.14 0-19.43 4.259-24.9 12.777-5.24 8.517-7.86 19.328-7.86 32.432v73.71c0 3.931.55 6.552 1.64 7.862 1.31 1.092 3.93 1.857 7.86 2.294l12.78 1.31v11.139h-79.609v-11.139l12.778-1.31c3.929-.437 6.443-1.202 7.534-2.294 1.31-1.31 1.966-3.931 1.966-7.862V212.216c0-3.713-.547-6.115-1.638-7.207-1.094-1.31-3.714-2.184-7.862-2.621l-12.778-1.31v-11.139h56.999v26.863Zm231.63-89.762h35.06v40.295h-35.06V127.04Zm35.06 102.866v97.953c0 3.931.54 6.552 1.64 7.862 1.3 1.092 3.92 1.857 7.86 2.294l12.77 1.31v11.139h-79.6v-11.139l12.77-1.31c3.93-.437 6.44-1.202 7.54-2.294 1.31-1.31 1.96-3.931 1.96-7.862V212.216c0-3.713-.54-6.115-1.64-7.207-1.09-1.31-3.71-2.184-7.86-2.621l-12.77-1.31v-11.139h57.66l-.33 39.967Zm24.41 40.951c0-12.668 1.86-24.134 5.57-34.398 3.93-10.484 9.39-19.329 16.38-26.536 6.99-7.207 15.29-12.776 24.9-16.708 9.61-3.931 20.2-5.897 31.77-5.897 8.3 0 16.38 1.092 24.25 3.276 8.08 1.966 15.39 5.242 21.95 9.829 6.55 4.368 12.12 10.046 16.7 17.035 4.59 6.988 7.76 15.288 9.5 24.897h-34.07c-.21-6.988-1.52-12.885-3.93-17.69-2.4-4.805-5.46-8.627-9.17-11.466-3.5-3.058-7.32-5.132-11.47-6.224-4.15-1.311-8.19-1.966-12.12-1.966-13.98 0-24.57 6.006-31.77 18.018-7 11.793-10.49 27.737-10.49 47.83 0 20.092 3.49 36.145 10.49 48.157 6.98 11.793 17.68 17.69 32.1 17.69 3.93 0 7.97-.546 12.12-1.638 4.15-1.31 7.97-3.385 11.47-6.224 3.49-3.058 6.44-6.989 8.84-11.794 2.41-4.805 3.72-10.702 3.93-17.69h34.07c-1.74 9.609-4.91 17.909-9.5 24.897-4.58 6.989-10.15 12.777-16.7 17.363-6.56 4.368-13.87 7.535-21.95 9.501-7.87 2.184-15.95 3.276-24.25 3.276-11.57 0-22.16-1.966-31.77-5.897-9.61-3.932-17.91-9.501-24.9-16.708-6.99-7.207-12.45-15.943-16.38-26.208-3.71-10.265-5.57-21.84-5.57-34.725Z" fill="#fff"/>
-                        </svg>
-                    </div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; margin-top: 20px;">
-                        Building the future of privacy-preserving blockchain infrastructure. Native encryption for a secure, decentralized world.
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#ecosystem">Ecosystem</a></li>
-                        <li><a href="#">Mainnet</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://docs.seismic.systems/" target="_blank">Documentation</a></li>
-                        <li><a href="#">Whitepaper</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://twitter.com/SeismicSys" target="_blank">Twitter</a></li>
-                        <li><a href="https://discord.com/invite/seismic" target="_blank">Discord</a></li>
-                        <li><a href="https://github.com/SeismicSystems" target="_blank">GitHub</a></li>
-                        <li><a href="#">Forum</a></li>
-                    </ul>
-                </div>
+    <!-- Footer Restoration -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">SEISMIC</div>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: 14px;">
+                    Native encryption for a secure, decentralized world. The private layer for Web3 and Fintechs.
+                </p>
             </div>
-            <div class="rox-copyright scroll-reveal">
-                <span>&copy; 2026 Seismic. All rights reserved.</span>
-                <div style="display: flex; gap: 24px;">
-                    <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
-                    <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
-                </div>
+            <div class="footer-links">
+                <h4>Ecosystem</h4>
+                <ul>
+                    <li><a href="#ecosystem">Partners</a></li>
+                    <li><a href="https://docs.seismic.systems/">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://x.com/SeismicSys">@SeismicSys</a></li>
+                    <li><a href="https://discord.gg/seismic">Discord</a></li>
+                </ul>
             </div>
         </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Optional: observer.unobserve(entry.target); if you only want it to animate once
-                    }
-                });
-            }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
-
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Fallback for safety: if observer fails, show everything after 1 second
-            setTimeout(() => {
-                document.querySelectorAll('.scroll-reveal').forEach(el => {
-                    el.classList.add('active');
-                });
-            }, 1000);
-        });
-    </script>
 </body>
 </html>
