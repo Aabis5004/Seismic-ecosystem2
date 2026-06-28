@@ -170,10 +170,14 @@ html_content = f"""<!DOCTYPE html>
             min-height: 100vh;
         }}
 
-        /* GSAP Initial States */
-        .hero-reveal {{ opacity: 0; visibility: hidden; transform: translateY(30px); }}
-        .gsap-reveal {{ opacity: 0; visibility: hidden; transform: translateY(60px); }}
-        .footer-col {{ opacity: 0; visibility: hidden; transform: translateY(30px); }}
+        /* Smooth Scroll & GSAP Initial States */
+        html.lenis, html.lenis body {{ height: auto; width: 100vw; overflow-x: hidden; }}
+        .lenis.lenis-smooth {{ scroll-behavior: auto !important; }}
+        .lenis.lenis-smooth [data-scroll-container] {{ overflow: hidden; }}
+
+        .scroll-reveal {{ opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(8px); will-change: opacity, transform, filter; }}
+        .hero-reveal {{ opacity: 0; transform: translateY(30px); filter: blur(8px); will-change: opacity, transform, filter; }}
+        .footer-col {{ opacity: 0; transform: translateY(30px); filter: blur(8px); }}
         .gsap-parallax-scale {{ transform: scale(0.95); opacity: 0; }}
         
         /* Navbar */
@@ -440,7 +444,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
     </section>
 
-    <div class="nv-marquee-section gsap-reveal">
+    <div class="nv-marquee-section scroll-reveal">
         <div class="nv-marquee-track">
             {marquee_html}
         </div>
@@ -499,6 +503,7 @@ html_content = f"""<!DOCTYPE html>
             </div>
         </div>
         
+        <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <script>
             const globeProjects = {json.dumps(expanded_projects)};
@@ -1040,7 +1045,7 @@ html_content = f"""<!DOCTYPE html>
                 if (p && !p.classList.contains('preloader-hidden')) {{
                     p.classList.add('preloader-hidden');
                     gsap.to(".hero-reveal", {{
-                        autoAlpha: 1, y: 0, duration: 1.0,
+                        opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0,
                         ease: "power3.out", stagger: 0.15
                     }});
                 }}
@@ -1072,6 +1077,52 @@ html_content = f"""<!DOCTYPE html>
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {{
             gsap.registerPlugin(ScrollTrigger);
+
+            // Initialize Lenis for Smooth Scrolling
+            const lenis = new Lenis({{
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            }});
+
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {{ lenis.raf(time * 1000); }});
+            gsap.ticker.lagSmoothing(0);
+            
+            // Advanced Staggered Scroll-Triggered Reveals
+            ScrollTrigger.batch(".scroll-reveal", {{
+                onEnter: batch => gsap.to(batch, {{
+                    opacity: 1, y: 0, scale: 1, filter: "blur(0px)",
+                    stagger: 0.15, duration: 1.2, ease: "power3.out"
+                }}),
+                start: "top 85%"
+            }});
+            
+            ScrollTrigger.batch(".footer-col", {{
+                onEnter: batch => gsap.to(batch, {{
+                    opacity: 1, y: 0, filter: "blur(0px)",
+                    stagger: 0.15, duration: 1.0, ease: "power3.out"
+                }}),
+                start: "top 90%"
+            }});
+
+            // Subdued Globe Parallax Effect
+            gsap.to(".globe-wrapper", {{
+                y: 100, // Move down slightly as you scroll past
+                ease: "none",
+                scrollTrigger: {{
+                    trigger: "#ecosystem",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }}
+            }});
             
             // 1. Smart Navbar Logic
             let lastScrollY = window.scrollY;

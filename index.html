@@ -37,10 +37,14 @@
             min-height: 100vh;
         }
 
-        /* GSAP Initial States */
-        .hero-reveal { opacity: 0; visibility: hidden; transform: translateY(30px); }
-        .gsap-reveal { opacity: 0; visibility: hidden; transform: translateY(60px); }
-        .footer-col { opacity: 0; visibility: hidden; transform: translateY(30px); }
+        /* Smooth Scroll & GSAP Initial States */
+        html.lenis, html.lenis body { height: auto; width: 100vw; overflow-x: hidden; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-scroll-container] { overflow: hidden; }
+
+        .scroll-reveal { opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(8px); will-change: opacity, transform, filter; }
+        .hero-reveal { opacity: 0; transform: translateY(30px); filter: blur(8px); will-change: opacity, transform, filter; }
+        .footer-col { opacity: 0; transform: translateY(30px); filter: blur(8px); }
         .gsap-parallax-scale { transform: scale(0.95); opacity: 0; }
         
         /* Navbar */
@@ -307,7 +311,7 @@
         </div>
     </section>
 
-    <div class="nv-marquee-section gsap-reveal">
+    <div class="nv-marquee-section scroll-reveal">
         <div class="nv-marquee-track">
             
             <div class="marquee-item">
@@ -460,6 +464,7 @@
             </div>
         </div>
         
+        <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <script>
             const globeProjects = [{"title": "Blend", "desc": "Treasury-as-a-service for fintechs using private multi-currency accounts and robust yield instruments.", "long_desc": "Blend brings sophisticated treasury management to growing fintechs. By leveraging Seismic's private layer, Blend offers multi-currency cash sweeps, automated yield generation, and complete data privacy for corporate treasuries.", "link_url": "https://blend.money/", "link_text": "VISIT BLEND \u2192", "logo": "<img src=\"https://framerusercontent.com/images/oJ7QVYoyXBbQ4HvAmIeq5U7AGpo.png\" alt=\"Blend\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$4.2B", "metric1_label": "PROCESSED", "metric2": "120+", "metric2_label": "INSTITUTIONS"}, {"title": "Vend", "desc": "Infrastructure for autonomous commerce. Self-financing machines powered by revenue-based credit.", "long_desc": "Vend is revolutionizing the machine economy. Using encrypted data rails, autonomous vending machines and kiosks can instantly secure financing based on verified, completely private revenue streams.", "link_url": "https://vend.money/", "link_text": "VISIT VEND \u2192", "logo": "<img src=\"https://framerusercontent.com/images/SARuWkuMvBKRbeQeXHS7HCejxQw.png\" alt=\"Vend\">", "status": "BETA", "progress": 75, "metric1": "8,500", "metric1_label": "ACTIVE MACHINES", "metric2": "$12M", "metric2_label": "FINANCED"}, {"title": "Sedona", "desc": "Your neobank. Your keys.", "long_desc": "Sedona provides a consumer neobanking experience with self-custody at its core. Manage your fiat and crypto seamlessly without ever surrendering control of your assets or personal data.", "link_url": "https://sedona.fi/", "link_text": "EXPLORE SEDONA \u2192", "logo": "<img src=\"https://sedona.fi/images/sedona-logo.svg\" alt=\"Sedona\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "45K", "metric1_label": "USERS", "metric2": "$85M", "metric2_label": "TVL"}, {"title": "Brookwell", "desc": "Private stablecoin cash accounts. Earn DeFi yields while securely paying rent and payroll via normal channels.", "long_desc": "Brookwell bridges the gap between decentralized yield and real-world utility. Hold your balance in high-yield stablecoins while routing payments directly to standard fiat bank accounts privately.", "link_url": "https://www.brookwell.com/", "link_text": "VIEW BROOKWELL \u2192", "logo": "<img src=\"https://www.brookwell.com/_next/image?url=%2Flogo.png&w=1080&q=75\" alt=\"Brookwell\">", "status": "IN DEVELOPMENT", "progress": 40, "metric1": "Q4", "metric1_label": "EXPECTED LAUNCH", "metric2": "12K", "metric2_label": "WAITLIST"}, {"title": "Cred Protocol", "desc": "Private credit & working capital. Underwriting and lending for real-world businesses with zero data leaks.", "long_desc": "Cred Protocol introduces zero-knowledge underwriting. Businesses can prove their cash flow and financial health to access on-chain credit pools without exposing sensitive trade secrets.", "link_url": "https://credprotocol.com/", "link_text": "EXPLORE CRED \u2192", "logo": "<img src=\"https://framerusercontent.com/images/ly6CYDZguctn369Fter3suQOhA.png\" alt=\"Cred\">", "status": "TESTNET", "progress": 85, "metric1": "$250M", "metric1_label": "COMMITTED CAPITAL", "metric2": "1.2s", "metric2_label": "PROOF TIME"}, {"title": "Specie", "desc": "Modern banking for global businesses. Send, receive, and manage money worldwide with fast settlement across local and global rails.", "long_desc": "Specie operates a next-generation clearing network. By leveraging Seismic's private layer, cross-border B2B payments settle instantly while complying with local data privacy regulations.", "link_url": "https://www.specie.finance/", "link_text": "EXPLORE SPECIE \u2192", "logo": "<img src=\"https://framerusercontent.com/images/UgeAlOHZZ3FQwYhs7gAADiyTsio.svg\" alt=\"Specie\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "14", "metric1_label": "SUPPORTED CORRIDORS", "metric2": "< 3s", "metric2_label": "SETTLEMENT"}, {"title": "Via", "desc": "Stablecoin-first finance. Borderless access to capital, seamless payments, and premium yield.", "long_desc": "Via enables borderless commerce by natively integrating stablecoins into everyday financial operations, offering a secure yield engine and instant vendor payouts globally.", "link_url": "https://www.via.xyz/", "link_text": "EXPLORE VIA \u2192", "logo": "<img src=\"https://framerusercontent.com/images/kztSbCmi83eGOrsXWs2bnEqc.png\" alt=\"Via\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "20+", "metric1_label": "PARTNER NETWORKS", "metric2": "5.5%", "metric2_label": "AVG YIELD"}, {"title": "Shift", "desc": "The Membership That Pays You Back. Elite financial services, lifestyle privileges, and exclusive perks driven by real yield models.", "long_desc": "Shift redefines premium card memberships. Instead of burning fees, your membership deposit earns private, on-chain yield that dynamically pays for luxury travel and lifestyle subscriptions.", "link_url": "https://www.shift-apply.com/", "link_text": "VISIT SHIFT \u2192", "logo": "<img src=\"https://framerusercontent.com/images/H4Yn2rDLeq2wENXWMdowmAbKZs.png\" alt=\"Shift\">", "status": "PRIVATE BETA", "progress": 90, "metric1": "1,000", "metric1_label": "FOUNDING MEMBERS", "metric2": "TIER 1", "metric2_label": "PERKS ACTIVE"}, {"title": "DashX", "desc": "Cross-border payments powered by crypto. Accept USDC, track transactions, and withdraw INR globally through one unified stack.", "long_desc": "DashX is the ultimate bridge for emerging markets. It enables merchants to accept global stablecoin payments and instantly off-ramp to local fiat currencies seamlessly.", "link_url": "https://dashx.xyz/", "link_text": "USE DASHX \u2192", "logo": "<img src=\"https://framerusercontent.com/images/le7rHwmt4MoWogPPDnWwvEQo1sA.png\" alt=\"DashX\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$8.2M", "metric1_label": "MONTHLY VOLUME", "metric2": "0.1%", "metric2_label": "FX FEE"}, {"title": "Avvio", "desc": "Global accounts for digital life. Save, invest, and spend your money worldwide with yield.", "long_desc": "Avvio offers an integrated borderless financial stack. Powered by Seismic's private layer, users can manage global accounts and earn high yields on cash reserves with fully protected financial records.", "link_url": "https://avvio.xyz/join", "link_text": "JOIN AVVIO \u2192", "logo": "<img src=\"https://framerusercontent.com/images/RaWkyzF3tA1zcBZe0YsE8QZLA.png\" alt=\"Avvio\">", "status": "IN DEVELOPMENT", "progress": 60, "metric1": "7.0%", "metric1_label": "MAX APY", "metric2": "Q4", "metric2_label": "EXPECTED LAUNCH"}, {"title": "Meow", "desc": "Modern business banking for AI agents and global teams. Payments, yield, and treasury.", "long_desc": "Meow is a compliant banking and treasury platform built for global startups and AI agents. In partnership with Seismic, Meow implements secure, end-to-end data encryption for confidential treasury sweeps and transactions.", "link_url": "https://www.meow.com/", "link_text": "EXPLORE MEOW \u2192", "logo": "<img src=\"https://www.meow.com/apple-touch-icon.png\" alt=\"Meow\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$1.2B+", "metric1_label": "TOTAL DEPOSITS", "metric2": "3.96%", "metric2_label": "TARGET YIELD"}];
@@ -1001,7 +1006,7 @@
                 if (p && !p.classList.contains('preloader-hidden')) {
                     p.classList.add('preloader-hidden');
                     gsap.to(".hero-reveal", {
-                        autoAlpha: 1, y: 0, duration: 1.0,
+                        opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0,
                         ease: "power3.out", stagger: 0.15
                     });
                 }
@@ -1033,6 +1038,52 @@
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger);
+
+            // Initialize Lenis for Smooth Scrolling
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            });
+
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
+            
+            // Advanced Staggered Scroll-Triggered Reveals
+            ScrollTrigger.batch(".scroll-reveal", {
+                onEnter: batch => gsap.to(batch, {
+                    opacity: 1, y: 0, scale: 1, filter: "blur(0px)",
+                    stagger: 0.15, duration: 1.2, ease: "power3.out"
+                }),
+                start: "top 85%"
+            });
+            
+            ScrollTrigger.batch(".footer-col", {
+                onEnter: batch => gsap.to(batch, {
+                    opacity: 1, y: 0, filter: "blur(0px)",
+                    stagger: 0.15, duration: 1.0, ease: "power3.out"
+                }),
+                start: "top 90%"
+            });
+
+            // Subdued Globe Parallax Effect
+            gsap.to(".globe-wrapper", {
+                y: 100, // Move down slightly as you scroll past
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#ecosystem",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
             
             // 1. Smart Navbar Logic
             let lastScrollY = window.scrollY;
