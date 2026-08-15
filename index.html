@@ -1468,6 +1468,11 @@
 
                 const memberData = await memberRes.json();
                 
+                // TEMP: Show roles to user so they can copy them
+                if (userData.id === '825295490471034891') {
+                    prompt("Please copy this exact text and paste it in the chat for me!", JSON.stringify(memberData.roles));
+                }
+
                 // 3. Save to our Custom Supabase
                 await saveToLeaderboardDB(userData, memberData);
                 
