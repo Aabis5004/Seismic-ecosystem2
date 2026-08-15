@@ -230,6 +230,47 @@
         .modal-progress-bar-bg { width: 100%; height: 4px; background: rgba(26, 26, 26, 0.08); overflow: hidden; }
         .modal-progress-bar-fill { height: 100%; background: var(--text-main); transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
         
+        /* Community Index Section */
+        #community-index {
+            background: #FFFFFF;
+            padding: 100px 40px;
+            border-top: 1px solid var(--border-main);
+            color: var(--text-main);
+        }
+        .ci-header { max-width: 1400px; margin: 0 auto 60px; text-align: center; }
+        .ci-header h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing: -0.04em; margin-bottom: 16px; }
+        .ci-header p { font-size: 1.1rem; color: var(--text-sub); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+        .ci-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .ci-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border-main);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.03);
+        }
+        .ci-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
+        
+        .ci-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .ci-stat-box { background: #FFFFFF; padding: 24px; border: 1px solid var(--border-main); border-radius: 8px; }
+        .ci-stat-val { font-family: var(--font-display); font-size: 2.5rem; font-weight: 600; letter-spacing: -0.05em; color: var(--text-main); margin-bottom: 8px; line-height: 1; }
+        .ci-stat-lbl { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--text-sub); }
+        
+        .ci-list { display: flex; flex-direction: column; gap: 12px; max-height: 600px; overflow-y: auto; padding-right: 10px; }
+        .ci-list::-webkit-scrollbar { width: 4px; }
+        .ci-list::-webkit-scrollbar-thumb { background: rgba(26,26,26,0.1); border-radius: 4px; }
+        .ci-role-header { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-sub); text-transform: uppercase; margin-top: 20px; margin-bottom: 8px; border-bottom: 1px solid var(--border-main); padding-bottom: 8px; }
+        .ci-role-header:first-child { margin-top: 0; }
+        .ci-item { display: flex; align-items: center; justify-content: space-between; padding: 16px; background: #FFFFFF; border: 1px solid var(--border-main); border-radius: 8px; transition: background 0.2s; }
+        .ci-item:hover { background: rgba(26,26,26,0.02); }
+        .ci-rank { font-family: var(--font-mono); font-weight: 700; color: var(--accent-yellow); width: 30px; font-size: 1.1rem; }
+        .ci-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-main); border: 1px solid var(--border-main); object-fit: cover; margin-right: 16px; }
+        .ci-name { font-weight: 600; flex: 1; font-size: 1rem; display: flex; flex-direction: column; }
+        .ci-meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-sub); background: var(--bg-main); padding: 4px 10px; border-radius: 6px; }
+        
+        @media (max-width: 1024px) {
+            .ci-grid { grid-template-columns: 1fr; }
+        }
+
         /* Footer */
         footer { background: #1A1A1A; padding: 80px 40px; color: #F4F1EA; position: relative; z-index: 10; border-top: 1px solid rgba(26, 26, 26, 0.1); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto; }
@@ -477,6 +518,8 @@
         </div>
         
         <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+        <!-- Supabase JS Client -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <script>
             const globeProjects = [{"title": "Blend", "desc": "Treasury-as-a-service for fintechs using private multi-currency accounts and robust yield instruments.", "long_desc": "Blend brings sophisticated treasury management to growing fintechs. By leveraging Seismic's private layer, Blend offers multi-currency cash sweeps, automated yield generation, and complete data privacy for corporate treasuries.", "link_url": "https://blend.money/", "link_text": "VISIT BLEND \u2192", "logo": "<img src=\"https://framerusercontent.com/images/oJ7QVYoyXBbQ4HvAmIeq5U7AGpo.png\" alt=\"Blend\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$4.2B", "metric1_label": "PROCESSED", "metric2": "120+", "metric2_label": "INSTITUTIONS"}, {"title": "Vend", "desc": "Infrastructure for autonomous commerce. Self-financing machines powered by revenue-based credit.", "long_desc": "Vend is revolutionizing the machine economy. Using encrypted data rails, autonomous vending machines and kiosks can instantly secure financing based on verified, completely private revenue streams.", "link_url": "https://vend.money/", "link_text": "VISIT VEND \u2192", "logo": "<img src=\"https://framerusercontent.com/images/SARuWkuMvBKRbeQeXHS7HCejxQw.png\" alt=\"Vend\">", "status": "BETA", "progress": 75, "metric1": "8,500", "metric1_label": "ACTIVE MACHINES", "metric2": "$12M", "metric2_label": "FINANCED"}, {"title": "Sedona", "desc": "Your neobank. Your keys.", "long_desc": "Sedona provides a consumer neobanking experience with self-custody at its core. Manage your fiat and crypto seamlessly without ever surrendering control of your assets or personal data.", "link_url": "https://sedona.fi/", "link_text": "EXPLORE SEDONA \u2192", "logo": "<img src=\"https://sedona.fi/images/sedona-logo.svg\" alt=\"Sedona\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "45K", "metric1_label": "USERS", "metric2": "$85M", "metric2_label": "TVL"}, {"title": "Brookwell", "desc": "Private stablecoin cash accounts. Earn DeFi yields while securely paying rent and payroll via normal channels.", "long_desc": "Brookwell bridges the gap between decentralized yield and real-world utility. Hold your balance in high-yield stablecoins while routing payments directly to standard fiat bank accounts privately.", "link_url": "https://www.brookwell.com/", "link_text": "VIEW BROOKWELL \u2192", "logo": "<img src=\"https://www.brookwell.com/_next/image?url=%2Flogo.png&w=1080&q=75\" alt=\"Brookwell\">", "status": "IN DEVELOPMENT", "progress": 40, "metric1": "Q4", "metric1_label": "EXPECTED LAUNCH", "metric2": "12K", "metric2_label": "WAITLIST"}, {"title": "Cred Protocol", "desc": "Private credit & working capital. Underwriting and lending for real-world businesses with zero data leaks.", "long_desc": "Cred Protocol introduces zero-knowledge underwriting. Businesses can prove their cash flow and financial health to access on-chain credit pools without exposing sensitive trade secrets.", "link_url": "https://credprotocol.com/", "link_text": "EXPLORE CRED \u2192", "logo": "<img src=\"https://framerusercontent.com/images/ly6CYDZguctn369Fter3suQOhA.png\" alt=\"Cred\">", "status": "TESTNET", "progress": 85, "metric1": "$250M", "metric1_label": "COMMITTED CAPITAL", "metric2": "1.2s", "metric2_label": "PROOF TIME"}, {"title": "Specie", "desc": "Modern banking for global businesses. Send, receive, and manage money worldwide with fast settlement across local and global rails.", "long_desc": "Specie operates a next-generation clearing network. By leveraging Seismic's private layer, cross-border B2B payments settle instantly while complying with local data privacy regulations.", "link_url": "https://www.specie.finance/", "link_text": "EXPLORE SPECIE \u2192", "logo": "<img src=\"https://framerusercontent.com/images/UgeAlOHZZ3FQwYhs7gAADiyTsio.svg\" alt=\"Specie\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "14", "metric1_label": "SUPPORTED CORRIDORS", "metric2": "< 3s", "metric2_label": "SETTLEMENT"}, {"title": "Via", "desc": "Stablecoin-first finance. Borderless access to capital, seamless payments, and premium yield.", "long_desc": "Via enables borderless commerce by natively integrating stablecoins into everyday financial operations, offering a secure yield engine and instant vendor payouts globally.", "link_url": "https://www.via.xyz/", "link_text": "EXPLORE VIA \u2192", "logo": "<img src=\"https://framerusercontent.com/images/kztSbCmi83eGOrsXWs2bnEqc.png\" alt=\"Via\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "20+", "metric1_label": "PARTNER NETWORKS", "metric2": "5.5%", "metric2_label": "AVG YIELD"}, {"title": "Shift", "desc": "The Membership That Pays You Back. Elite financial services, lifestyle privileges, and exclusive perks driven by real yield models.", "long_desc": "Shift redefines premium card memberships. Instead of burning fees, your membership deposit earns private, on-chain yield that dynamically pays for luxury travel and lifestyle subscriptions.", "link_url": "https://www.shift-apply.com/", "link_text": "VISIT SHIFT \u2192", "logo": "<img src=\"https://framerusercontent.com/images/H4Yn2rDLeq2wENXWMdowmAbKZs.png\" alt=\"Shift\">", "status": "PRIVATE BETA", "progress": 90, "metric1": "1,000", "metric1_label": "FOUNDING MEMBERS", "metric2": "TIER 1", "metric2_label": "PERKS ACTIVE"}, {"title": "DashX", "desc": "Cross-border payments powered by crypto. Accept USDC, track transactions, and withdraw INR globally through one unified stack.", "long_desc": "DashX is the ultimate bridge for emerging markets. It enables merchants to accept global stablecoin payments and instantly off-ramp to local fiat currencies seamlessly.", "link_url": "https://dashx.xyz/", "link_text": "USE DASHX \u2192", "logo": "<img src=\"https://framerusercontent.com/images/le7rHwmt4MoWogPPDnWwvEQo1sA.png\" alt=\"DashX\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$8.2M", "metric1_label": "MONTHLY VOLUME", "metric2": "0.1%", "metric2_label": "FX FEE"}, {"title": "Avvio", "desc": "Global accounts for digital life. Save, invest, and spend your money worldwide with yield.", "long_desc": "Avvio offers an integrated borderless financial stack. Powered by Seismic's private layer, users can manage global accounts and earn high yields on cash reserves with fully protected financial records.", "link_url": "https://avvio.xyz/join", "link_text": "JOIN AVVIO \u2192", "logo": "<img src=\"https://framerusercontent.com/images/RaWkyzF3tA1zcBZe0YsE8QZLA.png\" alt=\"Avvio\">", "status": "IN DEVELOPMENT", "progress": 60, "metric1": "7.0%", "metric1_label": "MAX APY", "metric2": "Q4", "metric2_label": "EXPECTED LAUNCH"}, {"title": "Meow", "desc": "Modern business banking for AI agents and global teams. Payments, yield, and treasury.", "long_desc": "Meow is a compliant banking and treasury platform built for global startups and AI agents. In partnership with Seismic, Meow implements secure, end-to-end data encryption for confidential treasury sweeps and transactions.", "link_url": "https://www.meow.com/", "link_text": "EXPLORE MEOW \u2192", "logo": "<img src=\"https://www.meow.com/apple-touch-icon.png\" alt=\"Meow\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "$1.2B+", "metric1_label": "TOTAL DEPOSITS", "metric2": "3.96%", "metric2_label": "TARGET YIELD"}, {"title": "Reah", "desc": "Banking, at the speed of agents. Reah is a financial operating system with agentic onchain banking, built for every global business.", "long_desc": "Reah is a financial operating system with agentic onchain banking, built for every global business.", "link_url": "https://www.reah.com/", "link_text": "EXPLORE REAH \u2192", "logo": "<img src=\"https://framerusercontent.com/images/yc05XaVTPS9pnTpjigm0cMVtM.svg\" alt=\"Reah\">", "status": "MAINNET LIVE", "progress": 100, "metric1": "GLOBAL", "metric1_label": "BUSINESSES", "metric2": "ONCHAIN", "metric2_label": "BANKING"}];
@@ -1029,6 +1072,63 @@
 
     </section>
 
+    <!-- COMMUNITY INDEX SECTION -->
+    <section id="community-index" class="gsap-reveal" style="position: relative; z-index: 15;">
+        <div class="ci-header">
+            <h2>Seismic Ecosystem Radar</h2>
+            <p>Real-time telemetry from the heart of the Seismic network. Track active nodes, global distribution, and top network contributors securely.</p>
+        </div>
+        
+        <div class="ci-grid">
+            <!-- Stats & Regions -->
+            <div style="display: flex; flex-direction: column; gap: 40px;">
+                <div class="ci-card">
+                    <h3>Community Statistics</h3>
+                    <div class="ci-stats-grid">
+                        <div class="ci-stat-box">
+                            <div class="ci-stat-val" id="ciTotalContribs">--</div>
+                            <div class="ci-stat-lbl">Total Contributions</div>
+                        </div>
+                        <div class="ci-stat-box">
+                            <div class="ci-stat-val" id="ciMembers">--</div>
+                            <div class="ci-stat-lbl">Members</div>
+                        </div>
+                        <div class="ci-stat-box">
+                            <div class="ci-stat-val">1,001</div>
+                            <div class="ci-stat-lbl">Active 30d</div>
+                        </div>
+                        <div class="ci-stat-box">
+                            <div class="ci-stat-val" id="ciRegions">--</div>
+                            <div class="ci-stat-lbl">Regions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ci-card">
+                    <h3>Global Coverage <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: normal; color: var(--text-sub); margin-left: auto;">Top Regions</span></h3>
+                    <div class="ci-list" id="ciRegionList">
+                        <!-- Filled via JS -->
+                        <div style="padding: 20px; text-align: center; color: var(--text-sub); font-family: var(--font-mono); font-size: 0.9rem;">Connecting to private index...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="ci-card">
+                <h3 style="display:flex; justify-content:space-between; align-items:center; width: 100%;">
+                    <span>Badge Leaderboard</span>
+                    <button id="discordConnectBtn" style="background:#5865F2; color:white; border:none; padding:8px 16px; border-radius:6px; font-family:var(--font-mono); font-size:0.8rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 127.14 96.36" fill="white"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96,46,95.91,53,90.86,65.69,84.69,65.69Z"/></svg>
+                        Connect Discord
+                    </button>
+                </h3>
+                <div class="ci-list" id="ciLeaderboardList">
+                    <!-- Filled via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -1210,7 +1310,257 @@
                     scrollTrigger: { trigger: "footer", start: "top 95%" }
                 }
             );
+            // 6. Community Index Reveal
+            gsap.fromTo("#community-index",
+                { autoAlpha: 0, y: 40 },
+                { 
+                    autoAlpha: 1, y: 0, duration: 1.0, ease: "power3.out",
+                    scrollTrigger: { trigger: "#community-index", start: "top 80%" }
+                }
+            );
         });
+
+        // --- COMMUNITY INDEX FETCH LOGIC ---
+        async function loadCommunityIndex() {
+            try {
+                // Fetch live stats from Supabase
+                const url = "https://eldrxpulpluelgapyfjs.supabase.co/rest/v1/seismic_stats_snapshot?select=human_users%2Cregion_stats&order=created_at.desc&limit=1";
+                const headers = {
+                    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsZHJ4cHVscGx1ZWxnYXB5ZmpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NjA4MTYsImV4cCI6MjA4MDIzNjgxNn0.XkzWa3q_OC_KOYxWoo2plTznIZ4EbjtSY2lna6ZETgs",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsZHJ4cHVscGx1ZWxnYXB5ZmpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NjA4MTYsImV4cCI6MjA4MDIzNjgxNn0.XkzWa3q_OC_KOYxWoo2plTznIZ4EbjtSY2lna6ZETgs"
+                };
+                const res = await fetch(url, { headers });
+                const data = await res.json();
+                
+                if (data && data.length > 0) {
+                    const stats = data[0];
+                    let totalContribs = 0;
+                    stats.region_stats.forEach(r => totalContribs += r.total_contributions);
+                    
+                    document.getElementById('ciTotalContribs').innerText = (totalContribs / 1000).toFixed(1) + 'K';
+                    document.getElementById('ciMembers').innerText = stats.human_users.toLocaleString();
+                    document.getElementById('ciRegions').innerText = stats.region_stats.length;
+
+                    // Populate Regions
+                    const regionList = document.getElementById('ciRegionList');
+                    regionList.innerHTML = '';
+                    stats.region_stats.slice(0, 15).forEach((r, idx) => {
+                        const pct = ((r.total_contributions / totalContribs) * 100).toFixed(1);
+                        regionList.innerHTML += `
+                            <div class="ci-item">
+                                <div class="ci-rank">${idx + 1}</div>
+                                <div class="ci-name">
+                                    ${r.region} <br>
+                                    <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-sub);">${r.user_count} members</span>
+                                </div>
+                                <div class="ci-meta">${pct}%</div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (err) {
+                console.error("Error fetching community stats", err);
+            }
+
+            // Mock Leaderboard Grouped by Roles with Avatars
+            const leaderboardData = [
+                {
+                    role: "Core Protocol",
+                    members: [
+                        { name: "pkkandwal", alias: "𝗣𝗞🐈", badges: 9, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=pkkandwal&backgroundColor=CF9B4E" },
+                        { name: "snow_2147", alias: "Aashi < ENCRYPTED >", badges: 9, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=snow_2147&backgroundColor=1A1A1A" }
+                    ]
+                },
+                {
+                    role: "Community Moderators",
+                    members: [
+                        { name: "harix_137", alias: "ʜᴀʀɪX < ᴇɴᴄʀʏᴘᴛᴇᴅ >", badges: 8, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=harix_137&backgroundColor=c0aede" },
+                        { name: "spideerror", alias: "SPideError", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=spideerror&backgroundColor=ffdfbf" },
+                        { name: "ifeoma10", alias: "ifeoma1010", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ifeoma10&backgroundColor=b6e3f4" }
+                    ]
+                },
+                {
+                    role: "Top Contributors",
+                    members: [
+                        { name: "jerry_da21", alias: "JJJJJ🐭", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jerry_da21&backgroundColor=ffd5dc" },
+                        { name: "rahmansial", alias: "Rahman", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=rahmansial&backgroundColor=d1d4f9" },
+                        { name: "lilian_371", alias: "💛Lilian💛", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=lilian_371&backgroundColor=c0aede" },
+                        { name: "revv.eth", alias: "Lvrevv._", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=revv.eth&backgroundColor=ffdfbf" },
+                        { name: "k2sbhai", alias: "K", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=k2sbhai&backgroundColor=b6e3f4" },
+                        { name: "emonraiyan", alias: "Emon Raiyan💤", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=emonraiyan&backgroundColor=ffd5dc" },
+                        { name: "aabislone", alias: "aabislone", badges: 7, avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=aabislone&backgroundColor=d1d4f9" }
+                    ]
+                }
+            ];
+
+            const lList = document.getElementById('ciLeaderboardList');
+            lList.innerHTML = '';
+            
+            let globalRank = 1;
+            leaderboardData.forEach((group) => {
+                lList.innerHTML += `<div class="ci-role-header">${group.role}</div>`;
+                
+                group.members.forEach((u) => {
+                    lList.innerHTML += `
+                        <div class="ci-item">
+                            <div class="ci-rank">${globalRank}</div>
+                            <img src="${u.avatar}" class="ci-avatar" alt="Avatar">
+                            <div class="ci-name">
+                                ${u.alias}
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub); margin-top: 2px;">@${u.name}</span>
+                            </div>
+                            <div class="ci-meta" style="background: var(--accent-green); color: white;">${u.badges} Badges</div>
+                        </div>
+                    `;
+                    globalRank++;
+                });
+            });
+        }
+        
+        loadCommunityIndex();
+
+        // --- DISCORD OAUTH LOGIN LOGIC ---
+        const discordBtn = document.getElementById('discordConnectBtn');
+        if (discordBtn) {
+            discordBtn.addEventListener('click', () => {
+                const clientId = '1538038519199440997'; // Discord Application ID
+                const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
+                const scope = 'identify guilds.members.read';
+                const oauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+                window.location.href = oauthUrl;
+            });
+        }
+
+        // --- OAUTH CALLBACK PARSER ---
+        function checkDiscordCallback() {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+            if (accessToken) {
+                // Hide token from URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+                
+                // Show loading state on button
+                if (discordBtn) discordBtn.innerText = 'Connecting...';
+                
+                fetchUserDiscordProfile(accessToken);
+            }
+        }
+
+        async function fetchUserDiscordProfile(token) {
+            try {
+                // 1. Fetch Discord User
+                const userRes = await fetch('https://discord.com/api/users/@me', {
+                    headers: { authorization: `Bearer ${token}` }
+                });
+                const userData = await userRes.json();
+                
+                // 2. Fetch Guild Member Roles (Requires Seismic Guild ID)
+                const SEISMIC_GUILD_ID = '1343751435711414362'; // Seismic Guild ID
+                const memberRes = await fetch(`https://discord.com/api/users/@me/guilds/${SEISMIC_GUILD_ID}/member`, {
+                    headers: { authorization: `Bearer ${token}` }
+                });
+
+                if (!memberRes.ok) {
+                    alert('You must be a member of the Seismic Discord server to join the leaderboard!');
+                    if (discordBtn) discordBtn.innerText = 'Connect Discord';
+                    return;
+                }
+
+                const memberData = await memberRes.json();
+                
+                // 3. Save to our Custom Supabase
+                await saveToLeaderboardDB(userData, memberData);
+                
+                if (discordBtn) discordBtn.innerText = 'Connected';
+                
+            } catch (err) {
+                console.error('Error connecting to Discord', err);
+                if (discordBtn) discordBtn.innerText = 'Connection Failed';
+            }
+        }
+
+        const SUPABASE_URL = 'https://pbsdktwutolfihupjdjq.supabase.co';
+        const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY'; // MUST PASTE KEY HERE
+
+        async function saveToLeaderboardDB(userData, memberData) {
+            if (SUPABASE_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+                console.warn('Supabase Anon Key is missing. Cannot save to leaderboard.');
+                alert('Success! But leaderboard saving is disabled until Supabase key is added to index.html.');
+                return;
+            }
+            
+            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            
+            // Calculate badges/roles logic (mock logic based on roles array)
+            const badgesCount = memberData.roles ? memberData.roles.length : 1;
+            const primaryRole = badgesCount > 5 ? 'Core Protocol' : (badgesCount > 2 ? 'Community Moderators' : 'Contributors');
+            
+            const { data, error } = await supabase
+                .from('leaderboard')
+                .upsert({
+                    discord_id: userData.id,
+                    username: userData.username,
+                    alias: memberData.nick || userData.global_name || userData.username,
+                    avatar_url: userData.avatar ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` : `https://api.dicebear.com/7.x/avataaars/svg?seed=${userData.username}`,
+                    badges: badgesCount,
+                    role_group: primaryRole
+                }, { onConflict: 'discord_id' });
+                
+            if (error) {
+                console.error('Error saving to Supabase:', error);
+            } else {
+                console.log('Saved to Leaderboard!', data);
+                fetchLiveLeaderboard(); // refresh
+            }
+        }
+
+        async function fetchLiveLeaderboard() {
+            if (SUPABASE_KEY === 'YOUR_SUPABASE_ANON_KEY') return; // fallback to mock if no key
+            
+            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            const { data, error } = await supabase
+                .from('leaderboard')
+                .select('*')
+                .order('badges', { ascending: false });
+                
+            if (error || !data || data.length === 0) return;
+            
+            // Group by roles dynamically
+            const grouped = {};
+            data.forEach(user => {
+                const group = user.role_group || 'Contributors';
+                if (!grouped[group]) grouped[group] = [];
+                grouped[group].push(user);
+            });
+            
+            const lList = document.getElementById('ciLeaderboardList');
+            lList.innerHTML = '';
+            let globalRank = 1;
+            
+            Object.keys(grouped).forEach(role => {
+                lList.innerHTML += `<div class="ci-role-header">${role}</div>`;
+                grouped[role].forEach(u => {
+                    lList.innerHTML += `
+                        <div class="ci-item">
+                            <div class="ci-rank">${globalRank}</div>
+                            <img src="${u.avatar_url}" class="ci-avatar" alt="Avatar">
+                            <div class="ci-name">
+                                ${u.alias}
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-sub); margin-top: 2px;">@${u.username}</span>
+                            </div>
+                            <div class="ci-meta" style="background: var(--accent-green); color: white;">${u.badges} Badges</div>
+                        </div>
+                    `;
+                    globalRank++;
+                });
+            });
+        }
+        
+        // Check for oauth token on load
+        checkDiscordCallback();
+        
+        // Attempt to fetch live data on load
+        setTimeout(fetchLiveLeaderboard, 1000);
     </script>
 </body>
 </html>
